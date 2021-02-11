@@ -32,6 +32,7 @@ jobs:
     workingDirectory: sdk/ingestion
 
   - script: |
+      pip install azure-core
       python tests\example.py 
     displayName: 'run tests'
     workingDirectory: .
