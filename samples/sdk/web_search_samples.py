@@ -12,7 +12,7 @@ sys.path.insert(0, current_dir)
 # Add your Bing Search V7 subscription key to your environment variables.
 #SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
 #ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
-SUBSCRIPTION_KEY = "00000000000000000000000000"
+SUBSCRIPTION_KEY =  None
 
 # Comment this logging mute out, if you want to include logging
 #logger = logging.getLogger()  # get the default logger

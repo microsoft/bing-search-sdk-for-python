@@ -13,7 +13,7 @@ sys.path.insert(0, current_dir)
 #SUBSCRIPTION_KEY = os.environ['BING_ENTITY_SEARCH_SUBSCRIPTION_KEY']
 #ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
 
-SUBSCRIPTION_KEY = "00000000000000000000000000"
+SUBSCRIPTION_KEY =  None
 ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 def dominant_entity_lookup(subscription_key):

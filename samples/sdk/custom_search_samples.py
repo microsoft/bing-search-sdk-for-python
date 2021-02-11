@@ -11,7 +11,7 @@ sys.path.insert(0, current_dir)
 # Add your Bing Autosuggest subscription key to your environment variables.
 
 
-SUBSCRIPTION_KEY = "00000000000000000000000000"
+SUBSCRIPTION_KEY =  None
 ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 #SUBSCRIPTION_KEY = os.environ['BING_CUSTOM_SEARCH_SUBSCRIPTION_KEY']
