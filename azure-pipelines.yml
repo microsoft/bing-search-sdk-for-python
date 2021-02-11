@@ -29,10 +29,11 @@ jobs:
 
   - script: python -m pip install --upgrade pip setuptools wheel
     displayName: 'Install tools'
-    workingDirectory: sdk/ingestion
+    workingDirectory: .
 
   - script: |
       pip install azure-core
+      pip install msrest
       python tests\example.py 
     displayName: 'run tests'
     workingDirectory: .
