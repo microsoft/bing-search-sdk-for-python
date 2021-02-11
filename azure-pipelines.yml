@@ -33,6 +33,7 @@ jobs:
 
   - script: |
       pip install azure-core
+      pip install msrest
       python tests\example.py 
     displayName: 'run tests'
     workingDirectory: .
