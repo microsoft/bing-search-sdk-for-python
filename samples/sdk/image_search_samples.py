@@ -1,19 +1,13 @@
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.ImageSearch.image_search_client._image_search_client import ImageSearchClient
-from sdk.ImageSearch.image_search_client.models._image_search_client_enums import ImageType, ImageAspect, ImageInsightModule
+import os
+from image_search_client import ImageSearchClient
+from image_search_client.models import ImageType, ImageAspect, ImageInsightModule
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
 
-#SUBSCRIPTION_KEY = os.environ["BING_IMAGE_SEARCH_SUBSCRIPTION_KEY"]
-#ENDPOINT = os.environ['BING_IMAGE_SEARCH_ENDPOINT']
+# Add your Bing Entity Search subscription key to your environment variables.
+SUBSCRIPTION_KEY = os.environ["BING_IMAGE_SEARCH_SUBSCRIPTION_KEY"]
+ENDPOINT = os.environ['BING_IMAGE_SEARCH_ENDPOINT']
 
-SUBSCRIPTION_KEY =  None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
+
 
 def image_search(subscription_key):
     """ImageSearch.
@@ -186,7 +180,7 @@ def image_detail(subscription_key):
             print("Couldn't find image caption!")
 
         # Pages including the image
-        if image_detail.pages_including.value:
+        if image_detail.pages_including:
             first_page = image_detail.pages_including.value[0]
             print("Pages including cound: {}".format(
                 len(image_detail.pages_including.value)))
@@ -198,7 +192,7 @@ def image_detail(subscription_key):
             print("Couldn't find any pages including this image!")
 
         # Related searched
-        if image_detail.related_searches.value:
+        if image_detail.related_searches:
             first_related_search = image_detail.related_searches.value[0]
             print("Related searches count: {}".format(
                 len(image_detail.related_searches.value)))
@@ -210,7 +204,7 @@ def image_detail(subscription_key):
             print("Couldn't find any related searches!")
 
         # Visually similar images
-        if image_detail.visually_similar_images.value:
+        if image_detail.visually_similar_images:
             first_visually_similar_images = image_detail.visually_similar_images.value[0]
             print("Visually similar images count: {}".format(
                 len(image_detail.visually_similar_images.value)))
@@ -224,7 +218,7 @@ def image_detail(subscription_key):
             print("Couldn't find any visually similar images!")
 
         # Image tags:
-        if image_detail.image_tags.value:
+        if image_detail.image_tags:
             first_image_tag = image_detail.image_tags.value[0]
             print("Image tags count: {}".format(
                 len(image_detail.image_tags.value)))

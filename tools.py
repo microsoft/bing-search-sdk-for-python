@@ -1,6 +1,5 @@
 """This file is just a sample launcher code.
 
-Nothing is is related to Cognitive Services.
 """
 try:
     from inspect import getfullargspec as get_arg_spec

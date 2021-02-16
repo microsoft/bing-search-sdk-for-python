@@ -9,6 +9,7 @@ import requests
 '''
 This sample uses the Bing Visual Search API with a local, query image and returns several web links
 and data of the exact image and/or similar images.
+Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-visual-search/overview
 '''
 
 # Add your Bing Search V7 subscriptionKey and endpoint to your environment variables.

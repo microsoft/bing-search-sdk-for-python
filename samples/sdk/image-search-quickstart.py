@@ -1,20 +1,12 @@
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.ImageSearch.image_search_client._image_search_client import ImageSearchClient
+import os
+from image_search_client import ImageSearchClient
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
 
 
 # Add your Bing Search V7 subscription key and endpoint to your environment variables.
-#SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
-#ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
+SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
+ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
 
-SUBSCRIPTION_KEY =  None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 search_term = "canadian rockies"
 

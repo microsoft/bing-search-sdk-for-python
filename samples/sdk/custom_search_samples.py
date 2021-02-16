@@ -1,21 +1,11 @@
 
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.CustomWebSearch.custom_search_client._custom_search_client import CustomSearchClient
+import os
+from custom_search_client import CustomSearchClient
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
-# Add your Bing Autosuggest subscription key to your environment variables.
 
-
-SUBSCRIPTION_KEY =  None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
-
-#SUBSCRIPTION_KEY = os.environ['BING_CUSTOM_SEARCH_SUBSCRIPTION_KEY']
-#ENDPOINT = os.environ['BING_CUSTOM_SEARCH_ENDPOINT']
+# Add your Bing Search V7 subscription key to your environment variables.
+SUBSCRIPTION_KEY = os.environ['BING_CUSTOM_SEARCH_SUBSCRIPTION_KEY']
+ENDPOINT = os.environ['BING_CUSTOM_SEARCH_ENDPOINT']
 
 def custom_search_web_page_result_lookup(subscription_key):
     """CustomSearch.

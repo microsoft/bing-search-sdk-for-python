@@ -10,7 +10,7 @@ from pprint import pprint
 
 '''
 This sample uses the Bing Autosuggest API to check the spelling of query words and then suggests corrections.
-Bing Spell Check API: https://docs.microsoft.com/en-us/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference57855119bca1df1c647bc358
+Bing Spell Check API: https://docs.microsoft.com/en-us/bing/search-apis/bing-spell-check/overview
 '''
 
 # Add your Bing Autosuggest subscription key and endpoint to your environment variables.

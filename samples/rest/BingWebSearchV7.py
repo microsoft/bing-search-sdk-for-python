@@ -8,12 +8,17 @@ import os
 from pprint import pprint
 import requests
 
+'''
+This sample makes a call to the Bing Web Search API with a query and returns relevant web search.
+Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-web-search/overview
+'''
+
 # Add your Bing Search V7 subscription key and endpoint to your environment variables.
 subscription_key = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
 endpoint = os.environ['BING_SEARCH_V7_ENDPOINT'] + "/bing/v7.0/search"
 
 # Query term(s) to search for. 
-query = "Microsoft Cognitive Services"
+query = "Microsoft"
 
 # Construct a request
 mkt = 'en-US'

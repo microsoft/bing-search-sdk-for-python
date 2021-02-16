@@ -10,7 +10,7 @@ import requests
 
 '''
 This sample makes a call to the Bing Video Search API with a topic query and returns relevant video with data.
-Documentation: https: // docs.microsoft.com/en-us/azure/cognitive-services/bing-web-search/
+Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-video-search/overview
 '''
 
 # Add your Bing Search V7 subscription key and endpoint to your environment variables.

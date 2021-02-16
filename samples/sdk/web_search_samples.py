@@ -1,22 +1,13 @@
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.WebSearch.web_search_client import WebSearchClient
-from sdk.WebSearch.web_search_client.models._web_search_client_enums import SafeSearch
+import os
+from web_search_client import WebSearchClient
+from web_search_client.models import SafeSearch
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
 
 # Add your Bing Search V7 subscription key to your environment variables.
-#SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
-#ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
-SUBSCRIPTION_KEY =  None
+SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
+ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
 
-# Comment this logging mute out, if you want to include logging
-#logger = logging.getLogger()  # get the default logger
-#logger.setLevel(50)  # set the skip all log which is smaller than critical (50)
+
 
 
 def result_types_lookup(subscription_key):

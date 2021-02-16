@@ -1,19 +1,13 @@
-
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.Autosuggest.autosuggest_client._auto_suggest_client import AutoSuggestClient
-from models._models import Suggestions, SuggestionsSuggestionGroup, SearchAction,ErrorResponse
+import os
+from autosuggest_client import AutoSuggestClient
+from autosuggest_client.models import Suggestions, SuggestionsSuggestionGroup, SearchAction,ErrorResponse
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
-# Add your Bing Autosuggest subscription key to your environment variables.
 
 
-SUBSCRIPTION_KEY = None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
+# Add your Bing Search V7 subscription key to your environment variables.
+SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
+ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
+
 def autosuggest_lookup(subscription_key):
     """AutoSuggestLookup.
 

@@ -1,23 +1,12 @@
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.VideoSearch.video_search_client._video_search_client import VideoSearchClient
-from sdk.VideoSearch.video_search_client.models._video_search_client_enums import VideoPricing, VideoLength, VideoResolution, VideoInsightModule
+import os
+from video_search_client import VideoSearchClient
+from video_search_client.models import VideoPricing, VideoLength, VideoResolution, VideoInsightModule
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
-# Add your Bing Autosuggest subscription key to your environment variables.
-
-
-SUBSCRIPTION_KEY =  None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 
 # Add your Bing Search V7 subscription key to your environment variables.
-#SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
-#ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
+SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
+ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
 
 def video_search(subscription_key):
     """VideoSearch.

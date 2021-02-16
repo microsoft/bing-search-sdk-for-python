@@ -6,7 +6,7 @@ import urllib.parse
 
 '''
 This sample uses the Bing Entity Search v7 to search for restaurants and return details about it.
-Bing Entity Search API: https://westus2.dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/operations/52069701a465405ab3286f82
+Bing Entity Search API: https://docs.microsoft.com/en-us/bing/search-apis/bing-entity-search/overview
 '''
 
 # Add your Bing Entity Search subscription key and endpoint to your environment variables.

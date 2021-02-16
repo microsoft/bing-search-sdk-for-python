@@ -1,0 +1,14 @@
+microsoft-bing-websearch
+microsoft-bing-visualsearch
+microsoft-bing-videosearch
+microsoft-bing-imagesearch
+microsoft-bing-newssearch
+microsoft-bing-spellcheck
+microsoft-bing-entitysearch
+microsoft-bing-autosuggest
+microsoft-bing-customimagesearch
+microsoft-bing-customwebsearch
+msrest
+azure-common
+msrestazure
+azure-core

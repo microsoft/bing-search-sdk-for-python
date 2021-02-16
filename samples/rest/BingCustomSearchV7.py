@@ -12,11 +12,10 @@ import requests
 
 '''
 This sample uses the Bing Custom Search API to search for a query topic and get back user-controlled web page results.
-Bing Custom Search API: https://docs.microsoft.com/en-us/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference 
+Bing Custom Search API: https://docs.microsoft.com/en-us/bing/search-apis/bing-custom-search/overview 
 '''
 
 # Add your Bing Custom Search subscription key and endpoint to your environment variables.
-# Your endpoint will have the form: https://<your-custom-subdomain>.cognitiveservices.azure.com
 subscriptionKey = os.environ['BING_CUSTOM_SEARCH_SUBSCRIPTION_KEY']
 endpoint = os.environ['BING_CUSTOM_SEARCH_ENDPOINT']
 customConfigId = os.environ["BING_CUSTOM_CONFIG"]  # you can also use "1"

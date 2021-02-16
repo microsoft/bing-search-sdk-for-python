@@ -10,7 +10,7 @@ import urllib.parse
 '''
 This sample uses the Bing Spell Check API to check the spelling of query words 
 and then suggests corrections with a scored confidence.
-Bing Spell Check API: https://dev.cognitive.microsoft.com/docs/services/5f7d486e04d2430193e1ca8f760cd7ed/operations/57855119bca1df1c647bc358 
+Bing Spell Check API: https://docs.microsoft.com/en-us/bing/search-apis/bing-spell-check/overview
 '''
 
 # Add your Bing Spell Check subscription key and endpoint to your environment variables.

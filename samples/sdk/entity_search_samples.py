@@ -1,20 +1,12 @@
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-from sdk.EntitySearch.entity_search_client._entity_search_client import EntitySearchClient
-from sdk.EntitySearch.entity_search_client.models._models import Place
+import os
+from entity_search_client import EntitySearchClient
+from entity_search_client.models import Place
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
 
 # Add your Bing Entity Search subscription key to your environment variables.
-#SUBSCRIPTION_KEY = os.environ['BING_ENTITY_SEARCH_SUBSCRIPTION_KEY']
-#ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
+SUBSCRIPTION_KEY = os.environ['BING_ENTITY_SEARCH_SUBSCRIPTION_KEY']
+ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
 
-SUBSCRIPTION_KEY =  None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 def dominant_entity_lookup(subscription_key):
     """DominantEntityLookup.
@@ -201,8 +193,8 @@ def error(subscription_key):
     except Exception as err:
         # The status code of the error should be a good indication of what occurred. However, if you'd like more details, you can dig into the response.
         # Please note that depending on the type of error, the response schema might be different, so you aren't guaranteed a specific error response schema.
-
-        print( "Exception occurred, with reason {}.\n".format(err))
+        print( "\n This sample is triggered with an error")
+        print( "\nException occurred, with reason {}.\n".format(err))
 
 
 if __name__ == "__main__":

@@ -1,18 +1,11 @@
-import os,sys,inspect
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-parent_dir2 = os.path.dirname(parent_dir)
-sys.path.insert(0, parent_dir2)
-
-from sdk.SpellCheck.spell_check_client._spell_check_client import SpellCheckClient
+import os
+from spell_check_client import SpellCheckClient
 from azure.core.credentials import AzureKeyCredential
-sys.path.insert(0, current_dir)
-# Add your Bing Spell Check subscription key to your environment variables.
-#SUBSCRIPTION_KEY = os.environ['BING_SPELL_CHECK_SUBSCRIPTION_KEY']
 
-SUBSCRIPTION_KEY =  None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
+# Add your Bing Spell Check subscription key to your environment variables.
+SUBSCRIPTION_KEY = os.environ['BING_SPELL_CHECK_SUBSCRIPTION_KEY']
+
+
 
 def spellcheck(subscription_key):
     """SpellCheck.

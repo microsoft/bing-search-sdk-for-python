@@ -1,14 +1,42 @@
-# Project
+# Azure SDK for Python
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+ [![Python](https://img.shields.io/pypi/pyversions/azure-core.svg?maxAge=2592000)](https://pypi.python.org/pypi/azure/) [![Build Status](https://bingapis.visualstudio.com/BingApis/_apis/build/status/microsoft.bing-search-sdk-for-python?branchName=main)](https://bingapis.visualstudio.com/BingApis/_build/latest?definitionId=8&branchName=main)
 
-As the maintainer of this project, please make a few updates:
+This repository is for active development of the Bing Apis SDK for Python. For consumers of the SDK we recommend visiting our [public developer docs](https://docs.microsoft.com/en-us/bing/search-apis/).
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## Getting started
+
+To get started with a specific library, see the `README.md` file located in the library's project folder.
+
+You can find service libraries in the `/sdk` directory.
+
+### Prerequisites
+
+* Python 2.7, or 3.5 or later is required to use this package.
+* [Bing Apis Account](https://aka.ms/bingapisignup).
+
+
+### Install the packages 
+
+You can find all dependencies in requirements.txt
+* [Autosuggest](https://pypi.org/project/microsoft-bing-autosuggest/).
+* [Custom Image Search](https://pypi.org/project/microsoft-bing-customimagesearch/).
+* [Custom Web Search](https://pypi.org/project/microsoft-bing-customwebsearch/).
+* [Entity Search](https://pypi.org/project/microsoft-bing-entitysearch/).
+* [Image Search](https://pypi.org/project/microsoft-bing-imagesearch/).
+* [News Search](https://pypi.org/project/microsoft-bing-newssearch/).
+* [Spell Check](https://pypi.org/project/microsoft-bing-spellcheck/).
+* [Video Search](https://pypi.org/project/microsoft-bing-videosearch/).
+* [Visual Search](https://pypi.org/project/microsoft-bing-visualsearch/).
+* [Web Search](https://pypi.org/project/microsoft-bing-websearch/).
+* required packages: "msrest>=0.5.0", "msrestazure>=0.4.32,<2.0.0", "azure-common~=1.1"
+
+## Need help?
+
+* For detailed documentation visit our [Bing Apis for documentation](https://docs.microsoft.com/en-us/bing/search-apis/)
+* File an issue via [Github Issues](https://github.com/microsoft/bing-search-sdk-for-python/issues)
+
+
 
 ## Contributing
 
