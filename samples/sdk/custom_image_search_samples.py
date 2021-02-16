@@ -4,9 +4,8 @@ from azure.core.credentials import AzureKeyCredential
 
 
 
-#Add your Bing Custom Search subscription key to your environment variables.
-SUBSCRIPTION_KEY = os.environ['BING_CUSTOM_SEARCH_SUBSCRIPTION_KEY']
-ENDPOINT = os.environ['BING_CUSTOM_SEARCH_ENDPOINT']
+SUBSCRIPTION_KEY = None
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 def custom_image_search_result_lookup(subscription_key):
     """CustomImageSearchResultLookup.

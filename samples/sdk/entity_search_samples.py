@@ -3,9 +3,8 @@ from entity_search_client import EntitySearchClient
 from entity_search_client.models import Place
 from azure.core.credentials import AzureKeyCredential
 
-# Add your Bing Entity Search subscription key to your environment variables.
-SUBSCRIPTION_KEY = os.environ['BING_ENTITY_SEARCH_SUBSCRIPTION_KEY']
-ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
+SUBSCRIPTION_KEY = None
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 
 def dominant_entity_lookup(subscription_key):

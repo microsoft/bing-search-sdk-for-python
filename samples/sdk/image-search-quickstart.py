@@ -3,9 +3,8 @@ from image_search_client import ImageSearchClient
 from azure.core.credentials import AzureKeyCredential
 
 
-# Add your Bing Search V7 subscription key and endpoint to your environment variables.
-SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
-ENDPOINT = os.environ['BING_ENTITY_SEARCH_ENDPOINT']
+SUBSCRIPTION_KEY = None
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 
 search_term = "canadian rockies"

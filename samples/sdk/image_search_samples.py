@@ -3,9 +3,8 @@ from image_search_client import ImageSearchClient
 from image_search_client.models import ImageType, ImageAspect, ImageInsightModule
 from azure.core.credentials import AzureKeyCredential
 
-# Add your Bing Entity Search subscription key to your environment variables.
-SUBSCRIPTION_KEY = os.environ["BING_IMAGE_SEARCH_SUBSCRIPTION_KEY"]
-ENDPOINT = os.environ['BING_IMAGE_SEARCH_ENDPOINT']
+SUBSCRIPTION_KEY = None
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 
 

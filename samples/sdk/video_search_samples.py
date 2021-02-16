@@ -4,9 +4,8 @@ from video_search_client.models import VideoPricing, VideoLength, VideoResolutio
 from azure.core.credentials import AzureKeyCredential
 
 
-# Add your Bing Search V7 subscription key to your environment variables.
-SUBSCRIPTION_KEY = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
-ENDPOINT = os.environ['BING_SEARCH_V7_ENDPOINT']
+SUBSCRIPTION_KEY = None
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 def video_search(subscription_key):
     """VideoSearch.
