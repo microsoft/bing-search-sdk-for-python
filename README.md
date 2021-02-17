@@ -1,6 +1,5 @@
-# Azure SDK for Python
+# Bing Apis SDK for Python
 
- [![Python](https://img.shields.io/pypi/pyversions/azure-core.svg?maxAge=2592000)](https://pypi.python.org/pypi/azure/) [![Build Status](https://bingapis.visualstudio.com/BingApis/_apis/build/status/microsoft.bing-search-sdk-for-python?branchName=main)](https://bingapis.visualstudio.com/BingApis/_build/latest?definitionId=8&branchName=main)
 
 This repository is for active development of the Bing Apis SDK for Python. For consumers of the SDK we recommend visiting our [public developer docs](https://docs.microsoft.com/en-us/bing/search-apis/).
 
