@@ -69,9 +69,6 @@ class WebOperations(object):
         # type: (...) -> "_models.SearchResponse"
         """The Web Search API lets you send a search query to Bing and get back search results that include links to webpages, images, and more.
 
-        The Web Search API lets you send a search query to Bing and get back search results that
-        include links to webpages, images, and more.
-
         :param x_bing_apis_sdk: Activate swagger compliance.
         :type x_bing_apis_sdk: str or ~web_search_client.models.XBingApisSDK
         :param query: The user's search query term. The term may not be empty. The term may contain
