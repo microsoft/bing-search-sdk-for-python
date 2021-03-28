@@ -30,6 +30,17 @@ You can find all dependencies in requirements.txt
 * [Web Search](https://pypi.org/project/microsoft-bing-websearch/).
 * required packages: "msrest>=0.5.0", "msrestazure>=0.4.32,<2.0.0", "azure-common~=1.1"
 
+### Running tests
+First execute the following command from the root level of the repo:
+```bash
+pip install -r ./tests/test-requirements.txt
+```
+
+Then run pytest by simply typing it into your CLI:
+```bash
+pytest
+```
+
 ## Need help?
 
 * For detailed documentation visit our [Bing Apis for documentation](https://docs.microsoft.com/en-us/bing/search-apis/)
