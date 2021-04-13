@@ -1,6 +1,6 @@
 # Tests folder 
 
 This folder is just the automatic testing system, to be sure that this sample is always up-to-date with the
-latest update of the mentionned package.
+latest update of the mentioned package.
 
-This folder is then not part of the samples itself, and is just a generic test launcher.
+This folder is a generic test launcher and not part of the samples themselves.
