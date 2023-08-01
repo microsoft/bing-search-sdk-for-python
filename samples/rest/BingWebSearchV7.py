@@ -15,7 +15,7 @@ Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-web-search
 
 # Add your Bing Search V7 subscription key and endpoint to your environment variables.
 subscription_key = os.environ['BING_SEARCH_V7_SUBSCRIPTION_KEY']
-endpoint = os.environ['BING_SEARCH_V7_ENDPOINT'] + "/bing/v7.0/search"
+endpoint = os.environ['BING_SEARCH_V7_ENDPOINT'] + "/v7.0/search"
 
 # Query term(s) to search for. 
 query = "Microsoft"
