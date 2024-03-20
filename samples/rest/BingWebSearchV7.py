@@ -17,17 +17,16 @@ Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-web-search
 subscription_key = os.environ['84900ec94e08423b9468f053da33eff9']
 endpoint = os.environ['https://api.bing.microsoft.com/'] + "/v7.0/search"
 
-# Query term(s) to search for.
-query = "Microsoft"
+# Query images to search for.
+image_path = 'MY-IMAGE' # for example: my_image.jpg
 
-# Construct a request
-mkt = 'en-US'
-params = { 'q': query, 'mkt': mkt }
-headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
-
+# Construct the request
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+file = {'image' : ('MY-IMAGE', open(image_path, 'rb'))} # MY-IMAGE is the name of the image file (no extention)
+    
 # Call the API
 try:
-    response = requests.get(endpoint, headers=headers, params=params)
+    response = requests.post(endpoint, headers=headers, files=file)
     response.raise_for_status()
 
     print("\nHeaders:\n")
