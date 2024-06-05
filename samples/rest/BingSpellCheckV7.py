@@ -6,23 +6,31 @@ import os
 from pprint import pprint
 import requests
 import urllib.parse
+from dotenv import load_dotenv
+
+# Load the environment variables from .env file
+load_dotenv()
 
 '''
 This sample uses the Bing Spell Check API to check the spelling of query words 
 and then suggests corrections with a scored confidence.
 Bing Spell Check API: https://docs.microsoft.com/en-us/bing/search-apis/bing-spell-check/overview
 '''
+AUTH_HEADER=os.environ.get('BING_SEARCH_V7_AUTHORIZATION_HEADER', 'Ocp-Apim-Subscription-Key')
+API_KEY='BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY'
 
 # Add your Bing Spell Check subscription key and endpoint to your environment variables.
-key = os.environ['BING_SPELL_CHECK_SUBSCRIPTION_KEY']
-endpoint = os.environ['BING_SPELL_CHECK_ENDPOINT'] + '/bing/v7.0/spellcheck'
+endpoint = os.environ.get('BING_SPELL_CHECK_SUBSCRIPTION_KEY', 'https://api.bing.microsoft.com/v7.0/spellcheck')
+key = os.environ.get(API_KEY)
+if key is None:
+    raise(RuntimeError(f'Please define the {API_KEY} environment variable'))
 
 # Query you want spell-checked. 
 query = 'Hollo, wrld!'
 
 # Construct request
 params = urllib.parse.urlencode( { 'mkt': 'en-US', 'mode': 'proof', 'text': query } )
-headers = { 'Ocp-Apim-Subscription-Key': key,
+headers = { AUTH_HEADER: key,
             'Content-Type': 'application/x-www-form-urlencoded' }
 
 # Optional headers
@@ -33,13 +41,13 @@ headers = { 'Ocp-Apim-Subscription-Key': key,
 
 # Call the API
 try:
-    response = requests.get(endpoint, headers=headers, params=params)
+    response = requests.post(endpoint, headers=headers, params=params)
     response.raise_for_status()
 
-    print("\nHeaders:\n")
+    print('\nHeaders:\n')
     print(response.headers)
 
-    print("\nJSON Response:\n")
+    print('\nJSON Response:\n')
     pprint(response.json())
 except Exception as ex:
     raise ex
