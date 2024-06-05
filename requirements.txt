@@ -12,3 +12,5 @@ msrest
 azure-common
 msrestazure
 azure-core
+requests
+python-dotenv
