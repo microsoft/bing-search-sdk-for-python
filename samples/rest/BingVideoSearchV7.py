@@ -17,28 +17,28 @@ This sample makes a call to the Bing Video Search API with a topic query and ret
 Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-video-search/overview
 '''
 
-AUTH_HEADER=os.environ.get('BING_SEARCH_V7_AUTHORIZATION_HEADER', 'Ocp-Apim-Subscription-Key')
-API_KEY='BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY'
+AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
+SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY'
 
-# Add your Bing Search V7 subscription key and endpoint to your environment variables.
-endpoint = os.environ.get('BING_SEARCH_V7_VIDEO_SEARCH_ENDPOINT', 'https://api.bing.microsoft.com/v7.0/videos')
-subscriptionKey = os.environ.get(API_KEY)
-if subscriptionKey is None:
-    raise(RuntimeError(f'Please define the {API_KEY} environment variable'))
+# Add your Bing Videos Search V7 subscription key to your environment variables / .env file
+subscription_key = os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME)
+if subscription_key is None:
+    raise(RuntimeError(f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
 # Search query
 query = 'kentucky derby'
 
 # Construct a request
+endpoint = 'https://api.bing.microsoft.com/v7.0/videos/search'
 headers = {
     'Content-Type': 'application/json',
-    AUTH_HEADER: subscriptionKey
+    AUTH_HEADER_NAME: subscription_key
     }
 params = { 'q': query }
 
 # Call the API
 try:
-    response = requests.get(endpoint + '/search', headers=headers, params=params)
+    response = requests.get(endpoint, headers=headers, params=params)
     response.raise_for_status()
 
     # Print results

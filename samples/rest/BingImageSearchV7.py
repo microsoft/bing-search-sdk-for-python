@@ -17,26 +17,26 @@ This sample makes a call to the Bing Image Search API with a text query and retu
 Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-image-search/overview
 '''
 
-AUTH_HEADER=os.environ.get('BING_SEARCH_V7_AUTHORIZATION_HEADER', 'Ocp-Apim-Subscription-Key')
-API_KEY='BING_SEARCH_V7_IMAGE_SEARCH_SUBSCRIPTION_KEY'
+AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
+SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_IMAGE_SEARCH_SUBSCRIPTION_KEY'
 
-# Add your Bing Search V7 subscription key and endpoint to your environment variables.
-endpoint = os.environ.get('BING_SEARCH_V7_IMAGE_SEARCH_ENDPOINT', 'https://api.bing.microsoft.com/v7.0/images')
-subscriptionKey = os.environ.get(API_KEY)
-if subscriptionKey is None:
-    raise(RuntimeError(f'Please define the {API_KEY} environment variable'))
+# Add your Bing Image Search V7 subscription key to your environment variables / .env file
+subscription_key = os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME)
+if subscription_key is None:
+    raise(RuntimeError(f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
 # Query to search for
 query = 'Arabian horse'
 
 # Construct a request
+endpoint = 'https://api.bing.microsoft.com/v7.0/images/search'
 mkt = 'en-US'
 params = {'q': query, 'mkt': mkt}
-headers = {AUTH_HEADER: subscriptionKey}
+headers = {AUTH_HEADER_NAME: subscription_key}
 
 # Call the API
 try:
-    response = requests.get(endpoint + '/search', headers=headers, params=params)
+    response = requests.get(endpoint, headers=headers, params=params)
     response.raise_for_status()
 
     print('\nHeaders:\n')

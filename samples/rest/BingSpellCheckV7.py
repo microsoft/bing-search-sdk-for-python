@@ -16,21 +16,21 @@ This sample uses the Bing Spell Check API to check the spelling of query words
 and then suggests corrections with a scored confidence.
 Bing Spell Check API: https://docs.microsoft.com/en-us/bing/search-apis/bing-spell-check/overview
 '''
-AUTH_HEADER=os.environ.get('BING_SEARCH_V7_AUTHORIZATION_HEADER', 'Ocp-Apim-Subscription-Key')
-API_KEY='BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY'
+AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
+SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY'
 
-# Add your Bing Spell Check subscription key and endpoint to your environment variables.
-endpoint = os.environ.get('BING_SPELL_CHECK_SUBSCRIPTION_KEY', 'https://api.bing.microsoft.com/v7.0/spellcheck')
-key = os.environ.get(API_KEY)
-if key is None:
-    raise(RuntimeError(f'Please define the {API_KEY} environment variable'))
+# Add your Bing Spell Check subscription key to your environment variables / .env file
+subscription_key = os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME)
+if subscription_key is None:
+    raise(RuntimeError(f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
 # Query you want spell-checked. 
-query = 'Hollo, wrld!'
+query = '''when i went two the houze i heared they'r'e voice and they're srcreams. I walk their and told: "helo fren"'''
 
 # Construct request
-params = urllib.parse.urlencode( { 'mkt': 'en-US', 'mode': 'proof', 'text': query } )
-headers = { AUTH_HEADER: key,
+endpoint = 'https://api.bing.microsoft.com/v7.0/spellcheck'
+params = { 'mkt': 'en-US', 'mode': 'proof', 'text': query }
+headers = { AUTH_HEADER_NAME: subscription_key,
             'Content-Type': 'application/x-www-form-urlencoded' }
 
 # Optional headers

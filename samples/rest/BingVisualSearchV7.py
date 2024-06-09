@@ -15,20 +15,22 @@ This sample uses the Bing Visual Search API with a local, query image and return
 and data of the exact image and/or similar images.
 Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-visual-search/overview
 '''
-AUTH_HEADER=os.environ.get('BING_SEARCH_V7_AUTHORIZATION_HEADER', 'Ocp-Apim-Subscription-Key')
-API_KEY='BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY'
+AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
+SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY'
 
-# Add your Bing Search V7 subscription key and endpoint to your environment variables.
-endpoint = os.environ.get('BING_SEARCH_V7_VISUAL_SEARCH_ENDPOINT', 'https://api.bing.microsoft.com/v7.0/images/visualsearch')
-subscription_key = os.environ.get(API_KEY)
+# Add your Bing Visual Search V7 subscription key to your environment variables / .env file
+subscription_key = os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME)
 if subscription_key is None:
-    raise(RuntimeError(f'Please define the {API_KEY} environment variable'))
+    raise(RuntimeError(f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
 image_path = './my_image.jpg'
 
 # Construct the request
-headers = {AUTH_HEADER: subscription_key}
-file = {'image' : ('MY-IMAGE', open(image_path, 'rb'))} # MY-IMAGE is the name of the image file (no extention)
+endpoint = 'https://api.bing.microsoft.com/v7.0/images/visualsearch'
+headers = {AUTH_HEADER_NAME: subscription_key,
+           'Content-Type': 'multipart/form-data' }
+
+file = {'image' : ('Image_name', open(image_path, 'rb'))} # Image_name is the name of the image
     
 # Call the API
 try:
