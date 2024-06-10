@@ -1,8 +1,3 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
-
-# -*- coding: utf-8 -*-
-
 import json
 import os
 from pprint import pprint
@@ -12,10 +7,10 @@ from dotenv import load_dotenv
 # Load the environment variables from .env file
 load_dotenv()
 
-'''
-This sample makes a call to the Bing Video Search API with a topic query and returns relevant video with data.
+"""
+This sample makes a call to the Bing Video Search API with a topic query and returns relevant video with data
 Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-video-search/overview
-'''
+"""
 
 AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
 SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY'
