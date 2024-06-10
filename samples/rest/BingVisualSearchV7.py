@@ -36,10 +36,10 @@ try:
     response = requests.post(endpoint, headers=headers, files=file)
     response.raise_for_status()
 
-    print('\nHeaders:\n')
-    print(response.headers)
+    print('\nResponse Headers:\n')
+    pprint(dict(response.headers))
 
     print('\nJSON Response:\n')
-    pprint(response.json())
+    print(json.dumps(response.json(), indent=4))
 except Exception as ex:
     raise ex
