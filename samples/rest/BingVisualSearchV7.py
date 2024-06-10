@@ -10,11 +10,10 @@ from dotenv import load_dotenv
 # Load the environment variables from .env file
 load_dotenv()
 
-'''
-This sample uses the Bing Visual Search API with a local, query image and returns several web links
-and data of the exact image and/or similar images.
+"""
+This sample calls the Bing Visual Search API with a query image and retrieves data and several web pages of the exact image and/or similar images
 Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-visual-search/overview
-'''
+"""
 AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
 SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY'
 

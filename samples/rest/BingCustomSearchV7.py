@@ -1,6 +1,3 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License.
-
 # You may need the below as well
 # pip install pipenv
 # pipenv install requests
@@ -14,10 +11,10 @@ from dotenv import load_dotenv
 # Load the environment variables from .env file
 load_dotenv()
 
-'''
-This sample uses the Bing Custom Search API to search for a query topic and get back user-controlled web page results.
-Bing Custom Search API: https://docs.microsoft.com/en-us/bing/search-apis/bing-custom-search/overview 
-'''
+"""
+This sample uses the Bing Custom Search API to search for a query topic and get back user-controlled web page results
+Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-custom-search/overview 
+"""
 AUTH_HEADER_NAME='Ocp-Apim-Subscription-Key'
 SUBSCRIPTION_KEY_ENV_VAR_NAME='BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY'
 
