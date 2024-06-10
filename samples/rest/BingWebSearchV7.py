@@ -1,6 +1,7 @@
 import json
 import os
 from pprint import pprint
+
 import requests
 from dotenv import load_dotenv
 
