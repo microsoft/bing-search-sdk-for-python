@@ -32,7 +32,8 @@ headers = {AUTH_HEADER_NAME: subscription_key}
 
 # Call the API
 try:
-    response = requests.get(endpoint, headers=headers, params=params)
+    response = requests.get(endpoint, headers=headers,
+                            params=params, timeout=10)
     response.raise_for_status()
 
     print('\nResponse Headers:\n')

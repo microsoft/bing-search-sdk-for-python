@@ -37,7 +37,7 @@ file = {'image': ('Image_name', open(image_path, 'rb'))}
 
 # Call the API
 try:
-    response = requests.post(endpoint, headers=headers, files=file)
+    response = requests.post(endpoint, headers=headers, files=file, timeout=10)
     response.raise_for_status()
 
     print('\nResponse Headers:\n')
