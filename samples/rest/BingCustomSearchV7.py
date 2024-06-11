@@ -34,7 +34,7 @@ url = 'https://api.bing.microsoft.com/v7.0/custom/search'
 # </url>
 # <request>
 response = requests.get(
-    url, headers={AUTH_HEADER_NAME: subscription_key}, params=params)
+    url, headers={AUTH_HEADER_NAME: subscription_key}, params=params, timeout=10)
 print('\nResponse Headers:\n')
 pprint(dict(response.headers))
 

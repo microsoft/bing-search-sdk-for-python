@@ -35,7 +35,8 @@ params = {'q': query}
 
 # Call the API
 try:
-    response = requests.get(endpoint, headers=headers, params=params)
+    response = requests.get(endpoint, headers=headers,
+                            params=params, timeout=10)
     response.raise_for_status()
 
     # Print results
