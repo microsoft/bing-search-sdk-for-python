@@ -1,7 +1,5 @@
-# You may need the below as well
-# pip install pipenv
-# pipenv install requests
-# <importsAndVars>
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License
 import json
 import os
 from pprint import pprint
@@ -28,11 +26,10 @@ if subscription_key is None:
 
 searchTerm = 'Microsoft'
 params = {'q': searchTerm, 'customconfig': customConfigId}
-# </importsAndVars>
-# <url>
+
+
 url = 'https://api.bing.microsoft.com/v7.0/custom/search'
-# </url>
-# <request>
+
 response = requests.get(
     url, headers={AUTH_HEADER_NAME: subscription_key}, params=params, timeout=10)
 print('\nResponse Headers:\n')
@@ -40,4 +37,3 @@ pprint(dict(response.headers))
 
 print('\nJSON Response:\n')
 print(json.dumps(response.json(), indent=4))
-# </request>

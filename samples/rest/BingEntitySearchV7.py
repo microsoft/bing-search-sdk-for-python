@@ -1,3 +1,5 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License
 import json
 import os
 from pprint import pprint
@@ -21,16 +23,14 @@ if subscription_key is None:
     raise (RuntimeError(
         f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
-# Entity you want to find
+# Entity you want information about
 query = 'alija izetbegović'
 
-# Construct the request
 endpoint = 'https://api.bing.microsoft.com/v7.0/entities'
 mkt = 'en-US'
 params = {'mkt': mkt, 'q': query}
 headers = {AUTH_HEADER_NAME: subscription_key}
 
-# Call the API
 try:
     response = requests.get(endpoint, headers=headers,
                             params=params, timeout=10)

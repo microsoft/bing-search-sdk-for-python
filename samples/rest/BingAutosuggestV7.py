@@ -1,3 +1,5 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License
 import json
 import os
 from pprint import pprint
@@ -21,14 +23,14 @@ if subscription_key is None:
     raise (RuntimeError(
         f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
-# Construct the request
-endpoint = 'https://api.bing.microsoft.com/v7.0/suggestions'
+# query to get autocompletion suggestions for
 query = 'sail'
+
+endpoint = 'https://api.bing.microsoft.com/v7.0/suggestions'
 mkt = 'en-US'
 params = {'q': query, 'mkt': mkt}
 headers = {AUTH_HEADER_NAME: subscription_key}
 
-# Call the API
 try:
     response = requests.get(endpoint, headers=headers,
                             params=params, timeout=10)

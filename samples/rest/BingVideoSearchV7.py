@@ -1,3 +1,5 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License
 import json
 import os
 from pprint import pprint
@@ -16,16 +18,14 @@ Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-video-sear
 AUTH_HEADER_NAME = 'Ocp-Apim-Subscription-Key'
 SUBSCRIPTION_KEY_ENV_VAR_NAME = 'BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY'
 
-# Add your Bing Videos Search V7 subscription key to your environment variables / .env file
+# Add your Bing Videos Search subscription key to your environment variables / .env file
 subscription_key = os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME)
 if subscription_key is None:
     raise (RuntimeError(
         f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
-# Search query
 query = 'kentucky derby'
 
-# Construct a request
 endpoint = 'https://api.bing.microsoft.com/v7.0/videos/search'
 headers = {
     'Content-Type': 'application/json',
@@ -33,13 +33,11 @@ headers = {
 }
 params = {'q': query}
 
-# Call the API
 try:
     response = requests.get(endpoint, headers=headers,
                             params=params, timeout=10)
     response.raise_for_status()
 
-    # Print results
     print('\nResponse Headers:\n')
     pprint(dict(response.headers))
 
