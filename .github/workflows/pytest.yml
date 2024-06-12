@@ -1,0 +1,45 @@
+name: Pytest
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install pytest pytest-retry
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo "PYTHONPATH=." >> "$GITHUB_ENV"
+
+    - name: Running tests for the rest code samples
+      env:
+        BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_IMAGE_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_IMAGE_SEARCH_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_ENTITY_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_ENTITY_SEARCH_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY }}
+        BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY }}
+        BING_CUSTOM_SEARCH_CONFIG: ${{ secrets.BING_CUSTOM_SEARCH_CONFIG }}
+      run: |          
+        python -m pytest --cumulative-timing 1 -v ./tests/rest/
