@@ -1,6 +1,5 @@
-# Download and install Python at https://www.python.org/
-# Run the following in a command console window: pip3 install requests
-
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License
 import json
 import os
 from pprint import pprint
@@ -18,24 +17,21 @@ Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-visual-sea
 AUTH_HEADER_NAME = 'Ocp-Apim-Subscription-Key'
 SUBSCRIPTION_KEY_ENV_VAR_NAME = 'BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY'
 
-# Add your Bing Visual Search V7 subscription key to your environment variables / .env file
+# Add your Bing Visual Search subscription key to your environment variables / .env file
 subscription_key = os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME)
 if subscription_key is None:
     raise (RuntimeError(
         f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
 image_path = './my_image.jpg'
-image_path = 'C:\\Users\\v-ghajam\\Pictures\\black.jpg'
 
-# Construct the request
 endpoint = 'https://api.bing.microsoft.com/v7.0/images/visualsearch'
 headers = {AUTH_HEADER_NAME: subscription_key,
            'Content-Type': 'multipart/form-data'}
 
-# Image_name is the name of the image
-file = {'image': ('Image_name', open(image_path, 'rb'))}
+# Replace <image_name> with a desired name for the image
+file = {'image': ('<image_name>', open(image_path, 'rb'))}
 
-# Call the API
 try:
     response = requests.post(endpoint, headers=headers, files=file, timeout=10)
     response.raise_for_status()

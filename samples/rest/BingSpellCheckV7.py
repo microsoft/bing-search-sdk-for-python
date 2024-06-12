@@ -1,3 +1,5 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License
 import json
 import os
 from pprint import pprint
@@ -21,22 +23,14 @@ if subscription_key is None:
     raise (RuntimeError(
         f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
-# Query you want spell-checked.
+# Query you want spell-checked
 query = 'when i went two the houze i heared they\'r\'e voice and they\'re srcreams. I walk their and told: "helo fren"'
 
-# Construct request
 endpoint = 'https://api.bing.microsoft.com/v7.0/spellcheck'
 params = {'mkt': 'en-US', 'mode': 'proof', 'text': query}
 headers = {AUTH_HEADER_NAME: subscription_key,
            'Content-Type': 'application/x-www-form-urlencoded'}
 
-# Optional headers
-#
-# X-MSEdge-ClientIP: 999.999.999.999
-# X-Search-Location: lat: +90.0000000000000;long: 00.0000000000000;re:100.000000000000
-# X-MSEdge-ClientID: <Client ID from Previous Response Goes Here>
-
-# Call the API
 try:
     response = requests.post(endpoint, headers=headers,
                              params=params, timeout=10)
