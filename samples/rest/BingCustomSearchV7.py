@@ -24,16 +24,20 @@ if subscription_key is None:
     raise (RuntimeError(
         f'Please define the {SUBSCRIPTION_KEY_ENV_VAR_NAME} environment variable'))
 
-searchTerm = 'Microsoft'
-params = {'q': searchTerm, 'customconfig': customConfigId}
+query = 'Microsoft'
 
+endpoint = 'https://api.bing.microsoft.com/v7.0/custom/search'
+params = {'q': query, 'customconfig': customConfigId}
+headers = {AUTH_HEADER_NAME: subscription_key}
 
-url = 'https://api.bing.microsoft.com/v7.0/custom/search'
+try:
+    response = requests.get(endpoint, headers=headers,
+                            params=params, timeout=10)
 
-response = requests.get(
-    url, headers={AUTH_HEADER_NAME: subscription_key}, params=params, timeout=10)
-print('\nResponse Headers:\n')
-pprint(dict(response.headers))
+    print('\nResponse Headers:\n')
+    pprint(dict(response.headers))
 
-print('\nJSON Response:\n')
-print(json.dumps(response.json(), indent=4))
+    print('\nJSON Response:\n')
+    print(json.dumps(response.json(), indent=4))
+except Exception as ex:
+    raise ex
