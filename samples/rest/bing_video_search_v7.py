@@ -1,5 +1,5 @@
 # Copyright (c) Microsoft Corporation.
-# Licensed under the MIT License
+# Licensed under the MIT License.
 """Python example showcasing the usage of Bing Video Search API using REST calls"""
 
 import json
