@@ -7,13 +7,11 @@ from pprint import pprint
 
 import dotenv
 import requests
+from requests import HTTPError
 
 
 def video_search_basic(
-    query,
-    subscription_key,
-    auth_header_name="Ocp-Apim-Subscription-Key",
-    mkt="en-us",
+    query, subscription_key, auth_header_name="Ocp-Apim-Subscription-Key", mkt="en-us"
 ):
     """Bing Video Search Basic REST call
 
@@ -21,6 +19,8 @@ def video_search_basic(
     returns relevant video with data.
 
     Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-video-search/overview
+
+    May throw HTTPError in case of invalid parameters or a server error.
 
     Args:
         subscription_key (str): Azure subscription key of Bing Video Search service
@@ -38,9 +38,10 @@ def video_search_basic(
         response = requests.get(endpoint, headers=headers, params=params, timeout=10)
         response.raise_for_status()
         return response
-
-    except Exception as ex:
-        raise Exception(f"Encountered exception: {ex}") from ex
+    except HTTPError as ex:
+        print(ex)
+        print("++The above exception was thrown and handled succesfully++")
+        return response
 
 
 def main() -> None:
@@ -48,6 +49,7 @@ def main() -> None:
     # Load the environment variables from .env file
     env = dotenv.dotenv_values()
 
+    # pylint: disable=invalid-name
     SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY"
 
     # Add your Bing Video Search V7 subscription key to your environment variables / .env file
@@ -59,16 +61,12 @@ def main() -> None:
             )
         )
 
-    try:
-        response = video_search_basic("kentucky derby", subscription_key)
-        print("\nResponse Headers:\n")
-        pprint(dict(response.headers))
+    response = video_search_basic("kentucky derby", subscription_key)
+    print("\nResponse Headers:\n")
+    pprint(dict(response.headers))
 
-        print("\nJSON Response:\n")
-        print(json.dumps(response.json(), indent=4))
-
-    except Exception as ex:
-        print(f"Encountered exception: {ex}")
+    print("\nJSON Response:\n")
+    print(json.dumps(response.json(), indent=4))
 
 
 if __name__ == "__main__":

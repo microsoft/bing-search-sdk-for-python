@@ -7,18 +7,18 @@ from pprint import pprint
 
 import dotenv
 import requests
+from requests import HTTPError
 
 
 def auto_suggest_basic(
-    query,
-    subscription_key,
-    auth_header_name="Ocp-Apim-Subscription-Key",
-    mkt="en-us",
+    query, subscription_key, auth_header_name="Ocp-Apim-Subscription-Key", mkt="en-us"
 ):
     """Bing Auto Suggest Basic REST call
 
     This sample uses the Bing Autosuggest API to provide a list of suggested search query strings
     Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-autosuggest/overview
+
+    May throw HTTPError in case of invalid parameters or a server error.
 
     Args:
         subscription_key (str): Azure subscription key of Bing Auto Suggest service
@@ -37,8 +37,10 @@ def auto_suggest_basic(
         response = requests.get(endpoint, headers=headers, params=params, timeout=10)
         response.raise_for_status()
         return response
-    except Exception as ex:
-        raise Exception(f"Encountered exception: {ex}") from ex
+    except HTTPError as ex:
+        print(ex)
+        print("++The above exception was thrown and handled succesfully++")
+        return response
 
 
 def main() -> None:
@@ -46,6 +48,7 @@ def main() -> None:
     # Load the environment variables from .env file
     env = dotenv.dotenv_values()
 
+    # pylint: disable=invalid-name
     SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
 
     # Add your Bing Auto Suggest V7 subscription key to your environment variables / .env file
@@ -57,16 +60,12 @@ def main() -> None:
             )
         )
 
-    try:
-        response = auto_suggest_basic(query="sail", subscription_key=subscription_key)
-        print("\nResponse Headers:\n")
-        pprint(dict(response.headers))
+    response = auto_suggest_basic(query="sail", subscription_key=subscription_key)
+    print("\nResponse Headers:\n")
+    pprint(dict(response.headers))
 
-        print("\nJSON Response:\n")
-        print(json.dumps(response.json(), indent=4))
-
-    except Exception as ex:
-        print(f"Encountered exception: {ex}")
+    print("\nJSON Response:\n")
+    print(json.dumps(response.json(), indent=4))
 
 
 if __name__ == "__main__":
