@@ -20,6 +20,7 @@ class CustomSearchRESTSamplesTest(unittest.TestCase):
     def test_custom_search_basic(self):
         """Test the basic REST call to Custom Search API"""
         response = custom_search_basic(
+            "microsoft",
             subscription_key=self.env.get(
                 "BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY"
             ),
@@ -30,6 +31,7 @@ class CustomSearchRESTSamplesTest(unittest.TestCase):
     def test_custom_search_response_is_json(self):
         """Test that Custom Search API returns responses in JSON format"""
         response = custom_search_basic(
+            "engine",
             subscription_key=self.env.get(
                 "BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY"
             ),
@@ -46,6 +48,7 @@ class CustomSearchRESTSamplesTest(unittest.TestCase):
         """Test that Custom Search API returns 401 if authorization fails"""
         with self.assertRaises(Exception) as ex:
             response = custom_search_basic(
+                "power",
                 subscription_key="",
                 custom_config_id=self.env.get("BING_CUSTOM_SEARCH_CONFIG"),
             )
@@ -54,6 +57,7 @@ class CustomSearchRESTSamplesTest(unittest.TestCase):
     def test_custom_search_response_object_type(self):
         """Test that Custom Search API returns the correct type hint"""
         response = custom_search_basic(
+            "new",
             subscription_key=self.env.get(
                 "BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY"
             ),
@@ -67,6 +71,7 @@ class CustomSearchRESTSamplesTest(unittest.TestCase):
     def test_custom_search_response_object_structure(self):
         """Test that Custom Search API responses follow the correct structure"""
         response = custom_search_basic(
+            "news",
             subscription_key=self.env.get(
                 "BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY"
             ),

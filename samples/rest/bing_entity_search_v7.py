@@ -10,9 +10,9 @@ import requests
 
 
 def entity_search_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="alija izetbegović",
     mkt="en-us",
 ):
     """Bing Entity Search Basic REST call
@@ -57,7 +57,7 @@ def main() -> None:
         )
 
     try:
-        response = entity_search_basic(subscription_key)
+        response = entity_search_basic("alija izetbegović", subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

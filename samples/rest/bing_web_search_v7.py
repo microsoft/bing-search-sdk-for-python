@@ -10,9 +10,9 @@ import requests
 
 
 def web_search_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="Microsoft",
     mkt="en-us",
 ):
     """Bing Web Search Basic REST call
@@ -58,7 +58,7 @@ def main() -> None:
         )
 
     try:
-        response = web_search_basic(subscription_key)
+        response = web_search_basic("Microsoft", subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

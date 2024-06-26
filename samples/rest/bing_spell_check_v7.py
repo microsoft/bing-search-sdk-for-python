@@ -10,10 +10,9 @@ import requests
 
 
 def spell_check_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="when i went two the houze i heared they'r'e voice and they're srcreams.\
-        I walk their and told: \"helo fren\"",
     mkt="en-us",
     mode="proof",
 ):
@@ -71,7 +70,11 @@ def main() -> None:
         )
 
     try:
-        response = spell_check_basic(subscription_key)
+        response = spell_check_basic(
+            "when i went two the houze i heared they'r'e voice and they're srcreams.\
+        I walk their and told: \"helo fren\"",
+            subscription_key,
+        )
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

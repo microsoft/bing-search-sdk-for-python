@@ -20,14 +20,20 @@ class NewsSearchRESTSamplesTest(unittest.TestCase):
     def test_news_search_basic(self):
         """Test the basic REST call to News Search API"""
         response = news_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY")
+            "microsoft",
+            subscription_key=self.env.get(
+                "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+            ),
         )
         self.assertEqual(response.status_code, 200)
 
     def test_news_search_response_is_json(self):
         """Test that News Search API returns responses in JSON format"""
         response = news_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY")
+            "ai",
+            subscription_key=self.env.get(
+                "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+            ),
         )
         try:
             response.json()
@@ -39,13 +45,16 @@ class NewsSearchRESTSamplesTest(unittest.TestCase):
     def test_news_search_no_auth(self):
         """Test that News Search API returns 401 if authorization fails"""
         with self.assertRaises(Exception) as ex:
-            response = news_search_basic(subscription_key="")
+            response = news_search_basic("copilot", subscription_key="")
         self.assertEqual(type(ex.exception.__cause__), HTTPError)
 
     def test_news_search_response_object_type(self):
         """Test that News Search API returns the correct type hint"""
         response = news_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY")
+            "azure",
+            subscription_key=self.env.get(
+                "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+            ),
         )
         try:
             self.assertEqual(response.json()["_type"], "News")
@@ -55,7 +64,10 @@ class NewsSearchRESTSamplesTest(unittest.TestCase):
     def test_news_search_response_object_structure(self):
         """Test that News Search API responses follow the correct structure"""
         response = news_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY")
+            "vim",
+            subscription_key=self.env.get(
+                "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+            ),
         )
         response_json = response.json()
         self.assertTrue(response_json["totalEstimatedMatches"] > 0)

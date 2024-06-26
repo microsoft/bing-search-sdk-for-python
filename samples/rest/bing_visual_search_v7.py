@@ -10,9 +10,9 @@ import requests
 
 
 def visual_search_basic(
+    image_path,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    image_path="./my_image.jpg",
     mkt="en-us",
 ):
     """Bing Visual Search Basic REST call
@@ -68,7 +68,7 @@ def main() -> None:
         )
 
     try:
-        response = visual_search_basic(subscription_key)
+        response = visual_search_basic("./my_image.jpg", subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

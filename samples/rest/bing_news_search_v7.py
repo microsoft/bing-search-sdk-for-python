@@ -10,9 +10,9 @@ import requests
 
 
 def news_search_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="Microsoft",
     mkt="en-us",
 ):
     """Bing News Search Basic REST call
@@ -59,7 +59,7 @@ def main() -> None:
         )
 
     try:
-        response = news_search_basic(subscription_key)
+        response = news_search_basic("Microsoft", subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 
