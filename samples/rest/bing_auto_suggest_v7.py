@@ -10,9 +10,9 @@ import requests
 
 
 def auto_suggest_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="sail",
     mkt="en-us",
 ):
     """Bing Auto Suggest Basic REST call
@@ -58,7 +58,7 @@ def main() -> None:
         )
 
     try:
-        response = auto_suggest_basic(subscription_key)
+        response = auto_suggest_basic(query="sail", subscription_key=subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

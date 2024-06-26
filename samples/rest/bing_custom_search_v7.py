@@ -10,10 +10,10 @@ import requests
 
 
 def custom_search_basic(
+    query,
     subscription_key,
     custom_config_id,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="Microsoft",
     mkt="en-us",
 ):
     """Bing Custom Search Basic REST call
@@ -64,7 +64,7 @@ def main() -> None:
     custom_config_id = env.get(CUSTOM_CONFIG_ID_ENV_VAR_NAME, "1")
 
     try:
-        response = custom_search_basic(subscription_key, custom_config_id)
+        response = custom_search_basic("Microsoft", subscription_key, custom_config_id)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

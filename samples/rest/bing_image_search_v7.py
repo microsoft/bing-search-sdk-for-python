@@ -10,9 +10,9 @@ import requests
 
 
 def image_search_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="Arabian horse",
     mkt="en-us",
 ):
     """Bing Image Search Basic REST call
@@ -59,7 +59,7 @@ def main() -> None:
         )
 
     try:
-        response = image_search_basic(subscription_key)
+        response = image_search_basic("Arabian horse", subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

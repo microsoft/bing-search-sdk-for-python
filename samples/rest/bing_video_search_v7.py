@@ -10,9 +10,9 @@ import requests
 
 
 def video_search_basic(
+    query,
     subscription_key,
     auth_header_name="Ocp-Apim-Subscription-Key",
-    query="kentucky derby",
     mkt="en-us",
 ):
     """Bing Video Search Basic REST call
@@ -60,7 +60,7 @@ def main() -> None:
         )
 
     try:
-        response = video_search_basic(subscription_key)
+        response = video_search_basic("kentucky derby", subscription_key)
         print("\nResponse Headers:\n")
         pprint(dict(response.headers))
 

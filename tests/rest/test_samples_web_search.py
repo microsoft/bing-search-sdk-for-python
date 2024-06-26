@@ -20,14 +20,16 @@ class WebSearchRESTSamplesTest(unittest.TestCase):
     def test_web_search_basic(self):
         """Test the basic REST call to Web Search API"""
         response = web_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY")
+            "vim",
+            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY"),
         )
         self.assertEqual(response.status_code, 200)
 
     def test_web_search_response_is_json(self):
         """Test that Web Search API returns responses in JSON format"""
         response = web_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY")
+            "copilot news",
+            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY"),
         )
         try:
             response.json()
@@ -39,13 +41,14 @@ class WebSearchRESTSamplesTest(unittest.TestCase):
     def test_web_search_no_auth(self):
         """Test that Web Search API returns 401 if authorization fails"""
         with self.assertRaises(Exception) as ex:
-            response = web_search_basic(subscription_key="")
+            response = web_search_basic("python crash course", subscription_key="")
         self.assertEqual(type(ex.exception.__cause__), HTTPError)
 
     def test_web_search_response_object_type(self):
         """Test that Web Search API returns the correct type hint"""
         response = web_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY")
+            "root of pi",
+            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY"),
         )
         try:
             self.assertEqual(response.json()["_type"], "SearchResponse")
@@ -55,7 +58,8 @@ class WebSearchRESTSamplesTest(unittest.TestCase):
     def test_web_search_response_object_structure(self):
         """Test that Web Search API responses follow the correct structure"""
         response = web_search_basic(
-            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY")
+            "fhd license-free wallpaper",
+            subscription_key=self.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY"),
         )
         response_json = response.json()
         self.assertIn("webPages", response_json)
