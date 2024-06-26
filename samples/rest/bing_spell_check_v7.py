@@ -7,6 +7,7 @@ from pprint import pprint
 
 import dotenv
 import requests
+from requests import HTTPError
 
 
 def spell_check_basic(
@@ -21,7 +22,9 @@ def spell_check_basic(
     This sample uses the Bing Spell Check API to perform contextual grammar and spell
         checking on a text string and then suggests corrections with a scored confidence
     Bing Spell Check API:
-    https://docs.microsoft.com/en-us/bing/search-apis/bing-spell-check/overview
+    Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-spell-check/overview
+
+    May throw HTTPError in case of invalid parameters or a server error.
 
     Args:
         subscription_key (str): Azure subscription key of Bing Spell Check service
@@ -48,9 +51,10 @@ def spell_check_basic(
         )
         response.raise_for_status()
         return response
-
-    except Exception as ex:
-        raise Exception(f"Encountered exception: {ex}") from ex
+    except HTTPError as ex:
+        print(ex)
+        print("++The above exception was thrown and handled succesfully++")
+        return response
 
 
 def main() -> None:
@@ -58,6 +62,7 @@ def main() -> None:
     # Load the environment variables from .env file
     env = dotenv.dotenv_values()
 
+    # pylint: disable=invalid-name
     SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY"
 
     # Add your Bing Spell Check V7 subscription key to your environment variables / .env file
@@ -69,20 +74,16 @@ def main() -> None:
             )
         )
 
-    try:
-        response = spell_check_basic(
-            "when i went two the houze i heared they'r'e voice and they're srcreams.\
-        I walk their and told: \"helo fren\"",
-            subscription_key,
-        )
-        print("\nResponse Headers:\n")
-        pprint(dict(response.headers))
+    response = spell_check_basic(
+        "when i went two the houze i heared they'r'e voice and they're srcreams.\
+    I walk their and told: \"helo fren\"",
+        subscription_key,
+    )
+    print("\nResponse Headers:\n")
+    pprint(dict(response.headers))
 
-        print("\nJSON Response:\n")
-        print(json.dumps(response.json(), indent=4))
-
-    except Exception as ex:
-        print(f"Encountered exception: {ex}")
+    print("\nJSON Response:\n")
+    print(json.dumps(response.json(), indent=4))
 
 
 if __name__ == "__main__":

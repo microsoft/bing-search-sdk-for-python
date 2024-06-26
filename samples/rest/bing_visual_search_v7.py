@@ -7,6 +7,7 @@ from pprint import pprint
 
 import dotenv
 import requests
+from requests import HTTPError
 
 
 def visual_search_basic(
@@ -21,6 +22,8 @@ def visual_search_basic(
     retrieves data and several web pages of the exact image and/or similar images.
 
     Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-visual-search/overview
+
+    May throw HTTPError in case of invalid parameters or a server error.
 
     Args:
         subscription_key (str): Azure subscription key of Bing Visual Search service
@@ -46,9 +49,10 @@ def visual_search_basic(
         )
         response.raise_for_status()
         return response
-
-    except Exception as ex:
-        raise Exception(f"Encountered exception: {ex}") from ex
+    except HTTPError as ex:
+        print(ex)
+        print("++The above exception was thrown and handled succesfully++")
+        return response
 
 
 def main() -> None:
@@ -56,6 +60,7 @@ def main() -> None:
     # Load the environment variables from .env file
     env = dotenv.dotenv_values()
 
+    # pylint: disable=invalid-name
     SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY"
 
     # Add your Bing Visual Search V7 subscription key to your environment variables / .env file
@@ -67,16 +72,12 @@ def main() -> None:
             )
         )
 
-    try:
-        response = visual_search_basic("./my_image.jpg", subscription_key)
-        print("\nResponse Headers:\n")
-        pprint(dict(response.headers))
+    response = visual_search_basic("./my_image.jpg", subscription_key)
+    print("\nResponse Headers:\n")
+    pprint(dict(response.headers))
 
-        print("\nJSON Response:\n")
-        print(json.dumps(response.json(), indent=4))
-
-    except Exception as ex:
-        print(f"Encountered exception: {ex}")
+    print("\nJSON Response:\n")
+    print(json.dumps(response.json(), indent=4))
 
 
 if __name__ == "__main__":

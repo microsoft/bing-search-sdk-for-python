@@ -5,7 +5,7 @@
 import unittest
 
 import dotenv
-from requests import HTTPError, JSONDecodeError
+from requests import JSONDecodeError
 
 from samples.rest.bing_auto_suggest_v7 import auto_suggest_basic
 
@@ -16,25 +16,23 @@ class AutoSuggestRESTSamplesTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.env = dotenv.dotenv_values()
+        cls.subscription_key = cls.env.get(
+            "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
+        )
+
+    def test_auto_suggest_subscription_key_not_empty(self):
+        """Test that the subscription key is defined in the environment"""
+        self.assertIsNotNone(self.subscription_key)
+        self.assertNotEqual(self.subscription_key, "")
 
     def test_auto_suggest_basic(self):
         """Test the basic REST call to Auto Suggest API"""
-        response = auto_suggest_basic(
-            "sail",
-            subscription_key=self.env.get(
-                "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
-            ),
-        )
+        response = auto_suggest_basic("sail", subscription_key=self.subscription_key)
         self.assertEqual(response.status_code, 200)
 
     def test_auto_suggest_response_is_json(self):
         """Test that Auto Suggest API returns responses in JSON format"""
-        response = auto_suggest_basic(
-            "vim",
-            subscription_key=self.env.get(
-                "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
-            ),
-        )
+        response = auto_suggest_basic("vim", subscription_key=self.subscription_key)
         try:
             response.json()
         except JSONDecodeError:
@@ -44,18 +42,12 @@ class AutoSuggestRESTSamplesTest(unittest.TestCase):
 
     def test_auto_suggest_no_auth(self):
         """Test that Auto Suggest API returns 401 if authorization fails"""
-        with self.assertRaises(Exception) as ex:
-            response = auto_suggest_basic("power", subscription_key="")
-        self.assertEqual(type(ex.exception.__cause__), HTTPError)
+        response = auto_suggest_basic("power", subscription_key="")
+        self.assertEqual(response.status_code, 401)
 
     def test_auto_suggest_response_object_type(self):
         """Test that Auto Suggest API returns the correct type hint"""
-        response = auto_suggest_basic(
-            "cute",
-            subscription_key=self.env.get(
-                "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
-            ),
-        )
+        response = auto_suggest_basic("cute", subscription_key=self.subscription_key)
         try:
             self.assertEqual(response.json()["_type"], "Suggestions")
         except KeyError:
@@ -64,10 +56,7 @@ class AutoSuggestRESTSamplesTest(unittest.TestCase):
     def test_auto_suggest_response_object_structure(self):
         """Test that Auto Suggest API responses follow the correct structure"""
         response = auto_suggest_basic(
-            "photography",
-            subscription_key=self.env.get(
-                "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
-            ),
+            "photography", subscription_key=self.subscription_key
         )
         response_json = response.json()
         self.assertIn("suggestionGroups", response_json)
@@ -76,14 +65,18 @@ class AutoSuggestRESTSamplesTest(unittest.TestCase):
             len(response_json["suggestionGroups"][0]["searchSuggestions"]), 0
         )
 
+    # https://learn.microsoft.com/en-us/bing/search-apis/bing-autosuggest/reference/response-objects#errorresponse
+    def test_auto_suggest_error_response_object_structure(self):
+        """Test the structure of the Error Response"""
+        response = auto_suggest_basic("", subscription_key="")
+        try:
+            self.assertEqual(response.json()["_type"], "ErrorResponse")
+        except KeyError:
+            self.fail("The response object type hint is missing")
+
     def test_auto_suggest_empty_query_trending(self):
         """Test that Auto Suggest API returns trending searches when the query is empty"""
-        response = auto_suggest_basic(
-            "",
-            subscription_key=self.env.get(
-                "BING_SEARCH_V7_AUTO_SUGGEST_SUBSCRIPTION_KEY"
-            ),
-        )
+        response = auto_suggest_basic("", subscription_key=self.subscription_key)
         response_json = response.json()
         self.assertIn("suggestionGroups", response_json)
         # Non-empty array of suggestions
