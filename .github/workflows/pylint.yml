@@ -34,5 +34,5 @@ jobs:
         # So, ignoring this warning
         #pylint --disable duplicate-code $(git ls-files './samples/rest/*.py')
         #pylint $(git ls-files './tests/rest/test_*.py')
-        pylint ./samples/rest/*web*.py
-        pylint ./samples/rest/*auto*.py
+        pylint ./samples/rest/*web*.py ./samples/rest/*image*.py
+        pylint ./samples/rest/*visual*.py ./samples/rest/*video*.py
