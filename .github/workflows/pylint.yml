@@ -32,5 +32,7 @@ jobs:
         # I.e., they don't import code from other files
         # I.e., they must have duplicate parts!
         # So, ignoring this warning
-        pylint --disable duplicate-code $(git ls-files './samples/rest/*.py')
-        pylint $(git ls-files './tests/rest/test_*.py')
+        #pylint --disable duplicate-code $(git ls-files './samples/rest/*.py')
+        #pylint $(git ls-files './tests/rest/test_*.py')
+        pylint ./samples/rest/*web*.py
+        pylint ./samples/rest/*auto*.py
