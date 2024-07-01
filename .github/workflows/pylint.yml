@@ -34,5 +34,5 @@ jobs:
         # I.e., they must have duplicate parts!
         # So, ignoring this warning
         pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
-        rpylint $(git ls-files './tests/rest/test_*.py')
+        pylint $(git ls-files './tests/rest/test_*.py')
         
