@@ -32,7 +32,7 @@ jobs:
       # continue-on-error: true
       # pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8
       run: |
-        if $(pylint $(git ls-files './tests/rest/test_*.py')); then
+        if pylint $(git ls-files './tests/rest/test_*.py') --output-format={C}:{path}: {msg} ({symbol}); then
           echo "::warning pylint found issues in files under ./tests/rest/test_*.py"
         fi
         
@@ -43,5 +43,5 @@ jobs:
       # I.e., they must have duplicate parts!
       # So, ignoring this warning
       run: |
-        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py') --output-format=HTML
+        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py') --output-format=html
         
