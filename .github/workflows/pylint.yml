@@ -16,15 +16,22 @@ jobs:
         python-version: ["3.11"]
     steps:
     - uses: actions/checkout@v4
+    
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pylint 
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Analysing rest samples test code with pylint
+      run: |
+        pylint $(git ls-files './tests/rest/test_*.py')
+        
     - name: Analysing rest samples code with pylint
       # continue-on-error: true
       run: |
@@ -33,9 +40,7 @@ jobs:
         # I.e., they don't import code from other files
         # I.e., they must have duplicate parts!
         # So, ignoring this warning
-        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py') --exit-code
+        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
+        
 
-    - name: Analysing rest samples test code with pylint
-      run: |
-        pylint $(git ls-files './tests/rest/test_*.py') --exit-code
         
