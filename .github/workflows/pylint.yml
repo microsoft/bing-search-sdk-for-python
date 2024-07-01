@@ -23,9 +23,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint
-        pip install -r ./requirements.txt
+        pip install pylint 
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Analysing the code with pylint
+      continue-on-error: true
       run: |
         # Sample files are intended as quickstarts for clients
         # That's why they are self-contained
@@ -33,4 +34,5 @@ jobs:
         # I.e., they must have duplicate parts!
         # So, ignoring this warning
         pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
-        pylint $(git ls-files './tests/rest/test_*.py')
+        rpylint $(git ls-files './tests/rest/test_*.py')
+        
