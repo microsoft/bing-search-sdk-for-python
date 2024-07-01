@@ -31,17 +31,17 @@ jobs:
     - name: Analysing rest samples test code with pylint
       # continue-on-error: true
       run: |
-        # pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8
+        : # pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8
         if pylint $(git ls-files './tests/rest/test_*.py'); then
           echo "::warning pylint found issues in files under ./tests/rest/test_*.py"
         fi
         
     - name: Analysing rest samples code with pylint
       run: |
-        # Sample files are intended as quickstarts for clients
-        # That's why they are self-contained
-        # I.e., they don't import code from other files
-        # I.e., they must have duplicate parts!
-        # So, ignoring this warning
+        : # Sample files are intended as quickstarts for clients
+        : # That's why they are self-contained
+        : # I.e., they don't import code from other files
+        : # I.e., they must have duplicate parts!
+        : # So, ignoring this warning
         pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
         
