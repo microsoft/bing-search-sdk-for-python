@@ -33,7 +33,7 @@ jobs:
       # continue-on-error: true
       # pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8 --output-format='{C}:{path}: {msg} ({symbol})'
       run: |
-        echo "::warning asdf found asdf in asdf under ./tasdf/st_*.py"
+        ::warning asdf found asdf in asdf under ./tasdf/st_*.py
         if pylint $(git ls-files './tests/rest/test_*.py'); then
           echo "::warning pylint found issues in files under ./tests/rest/test_*.py"
         fi
