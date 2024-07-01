@@ -31,4 +31,4 @@ jobs:
     - name: Running unit tests for the rest code samples
       # continue-on-error: true
       run: |          
-        python -m unittest discover -v -s .\tests\rest\ -p "test*.py"
+        python -m unittest discover -v -s ./tests/rest/ -p "test*.py"
