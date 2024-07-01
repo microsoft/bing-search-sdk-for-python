@@ -1,0 +1,32 @@
+name: Unittest
+
+on:
+  push:
+    branches:
+      - v-ghajam/CI-CD-Linter
+  pull_request:
+    branches:
+      - v-ghajam/CI-CD-Linter
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install unittest 
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Running unit tests for the rest code samples
+      # continue-on-error: true
+      run: |          
+        python -m unittest discover -v -s .\tests\rest\ -p "test*.py"
