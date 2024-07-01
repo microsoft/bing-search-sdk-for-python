@@ -25,14 +25,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint 
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Analysing the code with pylint
-      continue-on-error: true
+    - name: Analysing rest samples code with pylint
+      # continue-on-error: true
       run: |
         # Sample files are intended as quickstarts for clients
         # That's why they are self-contained
         # I.e., they don't import code from other files
         # I.e., they must have duplicate parts!
         # So, ignoring this warning
-        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
-        pylint $(git ls-files './tests/rest/test_*.py')
+        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py') --exit-code
+
+    - name: Analysing rest samples test code with pylint
+      run: |
+        pylint $(git ls-files './tests/rest/test_*.py') --exit-code
         
