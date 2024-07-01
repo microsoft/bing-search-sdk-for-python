@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v4
     
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
         
@@ -30,18 +30,18 @@ jobs:
 
     - name: Analysing rest samples test code with pylint
       # continue-on-error: true
+      # pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8
       run: |
-        : # pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8
         if pylint $(git ls-files './tests/rest/test_*.py'); then
           echo "::warning pylint found issues in files under ./tests/rest/test_*.py"
         fi
         
     - name: Analysing rest samples code with pylint
+      # Sample files are intended as quickstarts for clients
+      # That's why they are self-contained
+      # I.e., they don't import code from other files
+      # I.e., they must have duplicate parts!
+      # So, ignoring this warning
       run: |
-        : # Sample files are intended as quickstarts for clients
-        : # That's why they are self-contained
-        : # I.e., they don't import code from other files
-        : # I.e., they must have duplicate parts!
-        : # So, ignoring this warning
         pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
         
