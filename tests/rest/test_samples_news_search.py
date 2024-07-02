@@ -2,6 +2,7 @@
 # Licensed under the MIT License.
 """Tests for News Search REST samples."""
 
+import os
 import unittest
 
 import dotenv
@@ -15,9 +16,10 @@ class NewsSearchRESTSamplesTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.env = dotenv.dotenv_values()
-        cls.subscription_key = cls.env.get(
-            "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+        cls.dotenv = dotenv.dotenv_values()
+        subscription_key_env_var_name = "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+        cls.subscription_key = cls.dotenv.get(
+            subscription_key_env_var_name, os.environ.get(subscription_key_env_var_name)
         )
 
     def test_news_search_subscription_key_not_empty(self):
