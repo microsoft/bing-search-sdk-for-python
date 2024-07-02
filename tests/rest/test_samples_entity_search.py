@@ -74,13 +74,19 @@ class EntitySearchRESTSamplesTest(unittest.TestCase):
         except KeyError:
             self.fail("The response object doesn't include any entity results")
 
-    # https://learn.microsoft.com/en-us/bing/search-apis/bing-entity-search/reference/query-parameters
+    @pytest.mark.xfail(
+        reason="issue in the api itself, see:\n\
+        https://learn.microsoft.com/en-us/bing/search-apis/bing-entity-search/reference/query-parameters"
+    )
     def test_entity_search_required_parameter_query(self):
         """Test that Entity Search API returns an error if a required parameter is missing"""
         response = entity_search_basic(subscription_key=self.subscription_key, query="")
         self.assertEqual(response.status_code, 400)
 
-    # https://learn.microsoft.com/en-us/bing/search-apis/bing-entity-search/reference/response-objects#errorresponse
+    @pytest.mark.xfail(
+        reason="issue in the api itself, see:\n\
+        https://learn.microsoft.com/en-us/bing/search-apis/bing-entity-search/reference/response-objects#errorresponse"
+    )
     def test_entity_search_error_response_object_structure(self):
         """Test the structure of the Error Response"""
         response = entity_search_basic("", "")

@@ -6,6 +6,7 @@ import os
 import unittest
 
 import dotenv
+import pytest
 from requests import JSONDecodeError
 
 from samples.rest.bing_video_search_v7 import video_search_basic
@@ -76,8 +77,10 @@ class VideoSearchRESTSamplesTest(unittest.TestCase):
         response = video_search_basic(subscription_key=self.subscription_key, query="")
         self.assertEqual(response.status_code, 400)
 
-    # pylint: disable=line-too-long
-    # learn.microsoft.com/en-us/bing/search-apis/bing-video-search/reference/response-objects#errorresponse
+    @pytest.mark.xfail(
+        reason="issue in the api itself, see:\n\
+        https://learn.microsoft.com/en-us/bing/search-apis/bing-video-search/reference/response-objects#errorresponse"
+    )
     def test_video_search_error_response_object_structure(self):
         """Test the structure of the Error Response"""
         response = video_search_basic("", "")

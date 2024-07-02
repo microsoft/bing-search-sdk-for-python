@@ -75,10 +75,6 @@ def visual_search_basic(
         print(ex)
         print("++The above exception was thrown and handled succesfully++")
         return response
-    except FileNotFoundError as ex:
-        print(ex)
-        print("++The above exception was thrown and handled succesfully++")
-        return
 
 
 def main() -> None:
@@ -98,10 +94,12 @@ def main() -> None:
             )
         )
 
+    # pylint
     response = visual_search_basic(
         subscription_key,
         # image_path="./my_image.jpg",
-        # image_url="https://upload.wikimedia.org/wikipedia/commons/4/40/Bing_Cherries_(USDA_ARS).jpg",
+        # image_url="https://upload.wikimedia.org/wikipedia/commons/4/40/"
+        # + "Bing_Cherries_(USDA_ARS).jpg",
     )
     pprint(dict(response.headers))
 
