@@ -6,6 +6,7 @@ import os
 import unittest
 
 import dotenv
+import pytest
 from requests import JSONDecodeError
 
 from samples.rest.bing_entity_search_v7 import entity_search_basic
@@ -61,6 +62,7 @@ class EntitySearchRESTSamplesTest(unittest.TestCase):
         except KeyError:
             self.fail("The response object doesn't include the type hint")
 
+    @pytest.mark.flaky(retries=5, delay=2)
     def test_entity_search_response_object_structure(self):
         """Test that Entity Search API responses follow the correct structure"""
         response = entity_search_basic("Arab", subscription_key=self.subscription_key)
