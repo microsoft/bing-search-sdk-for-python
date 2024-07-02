@@ -2,6 +2,7 @@
 # Licensed under the MIT License.
 """Tests for Custom Search REST samples."""
 
+import os
 import unittest
 
 import dotenv
@@ -15,11 +16,15 @@ class CustomSearchRESTSamplesTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.env = dotenv.dotenv_values()
-        cls.subscription_key = cls.env.get(
-            "BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY"
+        cls.dotenv = dotenv.dotenv_values()
+        subscription_key_env_var_name = "BING_SEARCH_V7_CUSTOM_SEARCH_SUBSCRIPTION_KEY"
+        cls.subscription_key = cls.dotenv.get(
+            subscription_key_env_var_name, os.environ.get(subscription_key_env_var_name)
         )
-        cls.config_id = cls.env.get("BING_CUSTOM_SEARCH_CONFIG")
+        config_id_env_var_name = "BING_CUSTOM_SEARCH_CONFIG"
+        cls.config_id = cls.dotenv.get(
+            config_id_env_var_name, os.environ.get(config_id_env_var_name)
+        )
 
     def test_custom_search_subscription_key_not_empty(self):
         """Test that the subscription key is defined in the environment"""

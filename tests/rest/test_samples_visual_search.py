@@ -2,6 +2,7 @@
 # Licensed under the MIT License.
 """Tests for Visual Search REST samples."""
 
+import os
 import unittest
 
 import dotenv
@@ -15,9 +16,10 @@ class VisualSearchRESTSamplesTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.env = dotenv.dotenv_values()
-        cls.subscription_key = cls.env.get(
-            "BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY"
+        cls.dotenv = dotenv.dotenv_values()
+        subscription_key_env_var_name = "BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY"
+        cls.subscription_key = cls.dotenv.get(
+            subscription_key_env_var_name, os.environ.get(subscription_key_env_var_name)
         )
 
     def test_visual_search_subscription_key_not_empty(self):
@@ -27,16 +29,12 @@ class VisualSearchRESTSamplesTest(unittest.TestCase):
 
     def test_visual_search_basic(self):
         """Test the basic REST call to Visual Search API"""
-        response = visual_search_basic(
-            "./my_image.jpg", subscription_key=self.subscription_key
-        )
+        response = visual_search_basic(subscription_key=self.subscription_key)
         self.assertEqual(response.status_code, 200)
 
     def test_visual_search_response_is_json(self):
         """Test that Visual Search API returns responses in JSON format"""
-        response = visual_search_basic(
-            "./my_image.jpg", subscription_key=self.subscription_key
-        )
+        response = visual_search_basic(subscription_key=self.subscription_key)
         try:
             response.json()
         except JSONDecodeError:
@@ -46,14 +44,12 @@ class VisualSearchRESTSamplesTest(unittest.TestCase):
 
     def test_visual_search_no_auth(self):
         """Test that Visual Search API returns 401 if authorization fails"""
-        response = visual_search_basic("./my_image.jpg", subscription_key="")
+        response = visual_search_basic(subscription_key="")
         self.assertEqual(response.status_code, 401)
 
     def test_visual_search_response_object_type(self):
         """Test that Visual Search API returns the correct type hint"""
-        response = visual_search_basic(
-            "./my_image.jpg", subscription_key=self.subscription_key
-        )
+        response = visual_search_basic(subscription_key=self.subscription_key)
         try:
             self.assertEqual(response.json()["_type"], "ImageKnowledge")
         except KeyError:
@@ -61,9 +57,7 @@ class VisualSearchRESTSamplesTest(unittest.TestCase):
 
     def test_visual_search_response_object_structure(self):
         """Test that Visual Search API responses follow the correct structure"""
-        response = visual_search_basic(
-            "./my_image.jpg", subscription_key=self.subscription_key
-        )
+        response = visual_search_basic(subscription_key=self.subscription_key)
         response_json = response.json()
         self.assertIn("image", response_json)
         self.assertIn("imageInsightsToken", response_json["image"])

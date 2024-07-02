@@ -2,9 +2,11 @@
 # Licensed under the MIT License.
 """Tests for Web Search REST samples."""
 
+import os
 import unittest
 
 import dotenv
+import pytest
 from requests import JSONDecodeError
 
 from samples.rest.bing_web_search_v7 import web_search_basic
@@ -15,8 +17,11 @@ class WebSearchRESTSamplesTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.env = dotenv.dotenv_values()
-        cls.subscription_key = cls.env.get("BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY")
+        cls.dotenv = dotenv.dotenv_values()
+        subscription_key_env_var_name = "BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY"
+        cls.subscription_key = cls.dotenv.get(
+            subscription_key_env_var_name, os.environ.get(subscription_key_env_var_name)
+        )
 
     def test_web_search_subscription_key_not_empty(self):
         """Test that the subscription key is defined in the environment"""
@@ -66,6 +71,7 @@ class WebSearchRESTSamplesTest(unittest.TestCase):
         self.assertGreater(len(response_json["webPages"]["value"]), 0)
         self.assertIn("rankingResponse", response_json)
 
+    @pytest.mark.flaky(retries=3, delay=1)
     def test_web_search_computation(self):
         """Test that Web Search API returns relevant Computation results"""
         response = web_search_basic(

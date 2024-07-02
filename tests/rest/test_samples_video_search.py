@@ -2,9 +2,11 @@
 # Licensed under the MIT License.
 """Tests for Video Search REST samples."""
 
+import os
 import unittest
 
 import dotenv
+import pytest
 from requests import JSONDecodeError
 
 from samples.rest.bing_video_search_v7 import video_search_basic
@@ -15,9 +17,10 @@ class VideoSearchRESTSamplesTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.env = dotenv.dotenv_values()
-        cls.subscription_key = cls.env.get(
-            "BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY"
+        cls.dotenv = dotenv.dotenv_values()
+        subscription_key_env_var_name = "BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY"
+        cls.subscription_key = cls.dotenv.get(
+            subscription_key_env_var_name, os.environ.get(subscription_key_env_var_name)
         )
 
     def test_video_search_subscription_key_not_empty(self):
@@ -74,8 +77,10 @@ class VideoSearchRESTSamplesTest(unittest.TestCase):
         response = video_search_basic(subscription_key=self.subscription_key, query="")
         self.assertEqual(response.status_code, 400)
 
-    # pylint: disable=line-too-long
-    # learn.microsoft.com/en-us/bing/search-apis/bing-video-search/reference/response-objects#errorresponse
+    @pytest.mark.xfail(
+        reason="issue in the api itself, see:\n\
+        https://learn.microsoft.com/en-us/bing/search-apis/bing-video-search/reference/response-objects#errorresponse"
+    )
     def test_video_search_error_response_object_structure(self):
         """Test the structure of the Error Response"""
         response = video_search_basic("", "")

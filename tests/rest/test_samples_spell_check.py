@@ -2,9 +2,11 @@
 # Licensed under the MIT License.
 """Tests for Spell Check REST samples."""
 
+import os
 import unittest
 
 import dotenv
+import pytest
 from requests import JSONDecodeError
 
 from samples.rest.bing_spell_check_v7 import spell_check_basic
@@ -15,9 +17,10 @@ class SpellCheckRESTSamplesTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.env = dotenv.dotenv_values()
-        cls.subscription_key = cls.env.get(
-            "BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY"
+        cls.dotenv = dotenv.dotenv_values()
+        subscription_key_env_var_name = "BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY"
+        cls.subscription_key = cls.dotenv.get(
+            subscription_key_env_var_name, os.environ.get(subscription_key_env_var_name)
         )
 
     def test_spell_check_subscription_key_not_empty(self):
@@ -72,7 +75,10 @@ class SpellCheckRESTSamplesTest(unittest.TestCase):
         response = spell_check_basic(query="", subscription_key=self.subscription_key)
         self.assertEqual(response.status_code, 400)
 
-    # https://learn.microsoft.com/en-us/bing/search-apis/bing-spell-check/reference/response-objects#errorresponse
+    @pytest.mark.xfail(
+        reason="issue in the api itself, see:\n\
+        https://learn.microsoft.com/en-us/bing/search-apis/bing-spell-check/reference/response-objects#errorresponse"
+    )
     def test_spell_check_error_response_object_structure(self):
         """Test the structure of the Error Response"""
         response = spell_check_basic("", "")
