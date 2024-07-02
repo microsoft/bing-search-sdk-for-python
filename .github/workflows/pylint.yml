@@ -3,13 +3,13 @@ name: Pylint
 on:
   push:
     branches:
-      - v-ghajam/CI-CD-Linter
+      - main
   pull_request:
     branches:
-      - v-ghajam/CI-CD-Linter
+      - main
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:

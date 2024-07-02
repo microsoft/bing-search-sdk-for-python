@@ -3,13 +3,13 @@ name: Black
 on:
   push:
     branches:
-      - v-ghajam/CI-CD-Linter
+      - main
   pull_request:
     branches:
-      - v-ghajam/CI-CD-Linter
+      - main
 
 jobs:
-  build:
+  format:
     runs-on: ubuntu-latest
     strategy:
       matrix:
