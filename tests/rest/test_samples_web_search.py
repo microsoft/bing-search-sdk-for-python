@@ -6,6 +6,7 @@ import os
 import unittest
 
 import dotenv
+import pytest
 from requests import JSONDecodeError
 
 from samples.rest.bing_web_search_v7 import web_search_basic
@@ -70,6 +71,7 @@ class WebSearchRESTSamplesTest(unittest.TestCase):
         self.assertGreater(len(response_json["webPages"]["value"]), 0)
         self.assertIn("rankingResponse", response_json)
 
+    @pytest.mark.flaky(retries=5, delay=2)
     def test_web_search_computation(self):
         """Test that Web Search API returns relevant Computation results"""
         response = web_search_basic(
