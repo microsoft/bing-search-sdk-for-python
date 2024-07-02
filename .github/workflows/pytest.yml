@@ -29,7 +29,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         echo "PYTHONPATH=." >> "$GITHUB_ENV"
 
-    - name: Running unit tests for the rest code samples
+    - name: Running tests for the rest code samples
       # continue-on-error: true
       env:
         BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY: ${{ secrets.BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY }}
