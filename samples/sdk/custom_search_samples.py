@@ -1,10 +1,14 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 
 import os
 from custom_search_client import CustomSearchClient
 from azure.core.credentials import AzureKeyCredential
 
 SUBSCRIPTION_KEY = None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
+ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
+
 
 def custom_search_web_page_result_lookup(subscription_key):
     """CustomSearch.
@@ -13,8 +17,8 @@ def custom_search_web_page_result_lookup(subscription_key):
     """
 
     client = CustomSearchClient(
-        endpoint=ENDPOINT,
-        credential=AzureKeyCredential(subscription_key))
+        endpoint=ENDPOINT, credential=AzureKeyCredential(subscription_key)
+    )
 
     try:
         web_data = client.custom_instance.search(query="xbox", custom_config=1)
@@ -22,8 +26,7 @@ def custom_search_web_page_result_lookup(subscription_key):
 
         if web_data.web_pages.value:
             first_web_result = web_data.web_pages.value[0]
-            print("Web Pages result count: {}".format(
-                len(web_data.web_pages.value)))
+            print("Web Pages result count: {}".format(len(web_data.web_pages.value)))
             print("First Web Page name: {}".format(first_web_result.name))
             print("First Web Page url: {}".format(first_web_result.url))
         else:
@@ -35,5 +38,6 @@ def custom_search_web_page_result_lookup(subscription_key):
 
 if __name__ == "__main__":
     import sys, os.path
+
     sys.path.append(os.path.abspath(os.path.join(__file__, "..", "..", "..")))
     custom_search_web_page_result_lookup(SUBSCRIPTION_KEY)
