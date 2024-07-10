@@ -1,0 +1,46 @@
+name: Pylint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint 
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo "PYTHONPATH=." >> "$GITHUB_ENV"
+
+    - name: Analysing rest samples test code with pylint
+      run: |
+        if ! pylint $(git ls-files './tests/rest/test_*.py') --fail-under 8; then
+          echo "::warning title=linter::pylint found issues in files under ./tests/rest/test_*.py"
+        fi
+        
+    - name: Analysing rest samples code with pylint
+      # Sample files are intended as quickstarts for clients
+      # That's why they are self-contained
+      # I.e., they don't import code from other files
+      # I.e., they must have duplicate parts!
+      # So, ignoring the warning using (--disable duplicate-code)
+      run: |
+        pylint --disable duplicate-code $(git ls-files './samples/rest/bing*.py')
+        

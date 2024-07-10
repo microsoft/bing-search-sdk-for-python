@@ -1,7 +1,7 @@
-# Bing Apis SDK for Python
+# Bing APIs SDK for Python
 
 
-This repository is for active development of the Bing Apis SDK for Python. For consumers of the SDK we recommend visiting our [public developer docs](https://docs.microsoft.com/en-us/bing/search-apis/).
+This repository is for active development of the Bing APIs SDK for Python. For consumers of the SDK we recommend visiting our [public developer docs](https://docs.microsoft.com/en-us/bing/search-apis/).
 
 ## Getting started
 
@@ -12,12 +12,12 @@ You can find service libraries in the `/sdk` directory.
 ### Prerequisites
 
 * Python 2.7, or 3.5 or later is required to use this package.
-* [Bing Apis Account](https://aka.ms/bingapisignup).
+* [Bing APIs Account](https://aka.ms/bingapisignup).
 
 
 ### Install the packages 
 
-You can find all dependencies in requirements.txt
+You can find all dependencies in requirements.txt.
 * [Autosuggest](https://pypi.org/project/microsoft-bing-autosuggest/).
 * [Custom Image Search](https://pypi.org/project/microsoft-bing-customimagesearch/).
 * [Custom Web Search](https://pypi.org/project/microsoft-bing-customwebsearch/).
@@ -43,7 +43,7 @@ pytest
 
 ## Need help?
 
-* For detailed documentation visit our [Bing Apis for documentation](https://docs.microsoft.com/en-us/bing/search-apis/)
+* For detailed documentation visit our [Bing APIs for documentation](https://docs.microsoft.com/en-us/bing/search-apis/)
 * File an issue via [Github Issues](https://github.com/microsoft/bing-search-sdk-for-python/issues)
 
 

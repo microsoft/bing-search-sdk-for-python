@@ -1,0 +1,35 @@
+name: Black
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install black 
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo "PYTHONPATH=." >> "$GITHUB_ENV"
+
+    - name: Checking the code for formatting issues
+      run: |
+          black --check --verbose $(git ls-files './tests/rest/test_*.py') $(git ls-files './samples/rest/bing*.py')
+        
