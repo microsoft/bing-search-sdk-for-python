@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._web_search_client import WebSearchClient
-__all__ = ['WebSearchClient']
+
+__all__ = ["WebSearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._image_search_client import ImageSearchClient
-__all__ = ['ImageSearchClient']
+
+__all__ = ["ImageSearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

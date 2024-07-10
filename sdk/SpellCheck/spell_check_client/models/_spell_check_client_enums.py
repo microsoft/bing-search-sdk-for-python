@@ -7,6 +7,7 @@
 from enum import Enum, EnumMeta
 from six import with_metaclass
 
+
 class _CaseInsensitiveEnumMeta(EnumMeta):
     def __getitem__(self, name):
         return super().__getitem__(name.upper())
@@ -29,9 +30,9 @@ class ActionType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     EDIT = "Edit"
     LOAD = "Load"
 
+
 class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that identifies the category of error.
-    """
+    """The error code that identifies the category of error."""
 
     NONE = "None"
     SERVER_ERROR = "ServerError"
@@ -40,9 +41,9 @@ class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     INVALID_AUTHORIZATION = "InvalidAuthorization"
     INSUFFICIENT_AUTHORIZATION = "InsufficientAuthorization"
 
+
 class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that further helps to identify the error.
-    """
+    """The error code that further helps to identify the error."""
 
     UNEXPECTED_ERROR = "UnexpectedError"
     RESOURCE_ERROR = "ResourceError"
@@ -56,15 +57,18 @@ class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     AUTHORIZATION_DISABLED = "AuthorizationDisabled"
     AUTHORIZATION_EXPIRED = "AuthorizationExpired"
 
+
 class ErrorType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     UNKNOWN_TOKEN = "UnknownToken"
     REPEATED_TOKEN = "RepeatedToken"
 
+
 class Mode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     PROOF = "proof"
     SPELL = "spell"
+
 
 class XBingApisSDK(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 

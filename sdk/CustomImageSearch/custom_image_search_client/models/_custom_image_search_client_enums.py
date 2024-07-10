@@ -7,6 +7,7 @@
 from enum import Enum, EnumMeta
 from six import with_metaclass
 
+
 class _CaseInsensitiveEnumMeta(EnumMeta):
     def __getitem__(self, name):
         return super().__getitem__(name.upper())
@@ -25,8 +26,7 @@ class _CaseInsensitiveEnumMeta(EnumMeta):
 
 
 class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that identifies the category of error.
-    """
+    """The error code that identifies the category of error."""
 
     NONE = "None"
     SERVER_ERROR = "ServerError"
@@ -35,9 +35,9 @@ class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     INVALID_AUTHORIZATION = "InvalidAuthorization"
     INSUFFICIENT_AUTHORIZATION = "InsufficientAuthorization"
 
+
 class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that further helps to identify the error.
-    """
+    """The error code that further helps to identify the error."""
 
     UNEXPECTED_ERROR = "UnexpectedError"
     RESOURCE_ERROR = "ResourceError"
@@ -51,11 +51,13 @@ class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     AUTHORIZATION_DISABLED = "AuthorizationDisabled"
     AUTHORIZATION_EXPIRED = "AuthorizationExpired"
 
+
 class Freshness(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     DAY = "Day"
     WEEK = "Week"
     MONTH = "Month"
+
 
 class ImageAspect(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
@@ -63,6 +65,7 @@ class ImageAspect(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     SQUARE = "Square"
     WIDE = "Wide"
     TALL = "Tall"
+
 
 class ImageColor(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
@@ -81,10 +84,12 @@ class ImageColor(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     WHITE = "White"
     YELLOW = "Yellow"
 
+
 class ImageContent(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     FACE = "Face"
     PORTRAIT = "Portrait"
+
 
 class ImageLicense(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
@@ -96,6 +101,7 @@ class ImageLicense(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     MODIFY = "Modify"
     MODIFY_COMMERCIALLY = "ModifyCommercially"
 
+
 class ImageSize(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     ALL = "All"
@@ -103,6 +109,7 @@ class ImageSize(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     MEDIUM = "Medium"
     LARGE = "Large"
     WALLPAPER = "Wallpaper"
+
 
 class ImageType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
@@ -113,11 +120,13 @@ class ImageType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     SHOPPING = "Shopping"
     TRANSPARENT = "Transparent"
 
+
 class SafeSearch(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     OFF = "Off"
     MODERATE = "Moderate"
     STRICT = "Strict"
+
 
 class XBingApisSDK(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 

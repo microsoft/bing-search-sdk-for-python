@@ -7,6 +7,7 @@
 from enum import Enum, EnumMeta
 from six import with_metaclass
 
+
 class _CaseInsensitiveEnumMeta(EnumMeta):
     def __getitem__(self, name):
         return super().__getitem__(name.upper())
@@ -29,6 +30,7 @@ class AnswerType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     ENTITIES = "Entities"
     PLACES = "Places"
 
+
 class EntityQueryScenario(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     """The supported query scenario. This field is set to DominantEntity or DisambiguationItem. The
     field is set to DominantEntity if Bing determines that only a single entity satisfies the
@@ -45,13 +47,14 @@ class EntityQueryScenario(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     LIST = "List"
     LIST_WITH_PIVOT = "ListWithPivot"
 
+
 class EntityScenario(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The supported scenario.
-    """
+    """The supported scenario."""
 
     DOMINANT_ENTITY = "DominantEntity"
     DISAMBIGUATION_ITEM = "DisambiguationItem"
     LIST_ITEM = "ListItem"
+
 
 class EntityType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
@@ -105,9 +108,9 @@ class EntityType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     PRODUCT = "Product"
     CAR = "Car"
 
+
 class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that identifies the category of error.
-    """
+    """The error code that identifies the category of error."""
 
     NONE = "None"
     SERVER_ERROR = "ServerError"
@@ -116,9 +119,9 @@ class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     INVALID_AUTHORIZATION = "InvalidAuthorization"
     INSUFFICIENT_AUTHORIZATION = "InsufficientAuthorization"
 
+
 class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that further helps to identify the error.
-    """
+    """The error code that further helps to identify the error."""
 
     UNEXPECTED_ERROR = "UnexpectedError"
     RESOURCE_ERROR = "ResourceError"
@@ -132,16 +135,19 @@ class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     AUTHORIZATION_DISABLED = "AuthorizationDisabled"
     AUTHORIZATION_EXPIRED = "AuthorizationExpired"
 
+
 class ResponseFormat(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     JSON = "Json"
     JSON_LD = "JsonLd"
+
 
 class SafeSearch(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     OFF = "Off"
     MODERATE = "Moderate"
     STRICT = "Strict"
+
 
 class XBingApisSDK(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 

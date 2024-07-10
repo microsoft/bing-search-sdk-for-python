@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._video_search_client import VideoSearchClient
-__all__ = ['VideoSearchClient']
+
+__all__ = ["VideoSearchClient"]

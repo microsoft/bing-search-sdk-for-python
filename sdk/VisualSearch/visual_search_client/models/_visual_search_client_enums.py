@@ -7,6 +7,7 @@
 from enum import Enum, EnumMeta
 from six import with_metaclass
 
+
 class _CaseInsensitiveEnumMeta(EnumMeta):
     def __getitem__(self, name):
         return super().__getitem__(name.upper())
@@ -25,8 +26,7 @@ class _CaseInsensitiveEnumMeta(EnumMeta):
 
 
 class Currency(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The monetary currency. For example, USD.
-    """
+    """The monetary currency. For example, USD."""
 
     USD = "USD"
     CAD = "CAD"
@@ -190,9 +190,9 @@ class Currency(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     ZAR = "ZAR"
     ZMW = "ZMW"
 
+
 class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that identifies the category of error.
-    """
+    """The error code that identifies the category of error."""
 
     NONE = "None"
     SERVER_ERROR = "ServerError"
@@ -201,9 +201,9 @@ class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     INVALID_AUTHORIZATION = "InvalidAuthorization"
     INSUFFICIENT_AUTHORIZATION = "InsufficientAuthorization"
 
+
 class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that further helps to identify the error.
-    """
+    """The error code that further helps to identify the error."""
 
     UNEXPECTED_ERROR = "UnexpectedError"
     RESOURCE_ERROR = "ResourceError"
@@ -216,6 +216,7 @@ class ErrorSubCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     AUTHORIZATION_REDUNDANCY = "AuthorizationRedundancy"
     AUTHORIZATION_DISABLED = "AuthorizationDisabled"
     AUTHORIZATION_EXPIRED = "AuthorizationExpired"
+
 
 class ItemAvailability(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     """The item's availability. The following are the possible values: Discontinued, InStock,
@@ -231,11 +232,13 @@ class ItemAvailability(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     PRE_ORDER = "PreOrder"
     SOLD_OUT = "SoldOut"
 
+
 class SafeSearch(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     OFF = "Off"
     MODERATE = "Moderate"
     STRICT = "Strict"
+
 
 class XBingApisSDK(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 

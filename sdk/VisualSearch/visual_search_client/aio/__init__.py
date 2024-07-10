@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._visual_search_client import VisualSearchClient
-__all__ = ['VisualSearchClient']
+
+__all__ = ["VisualSearchClient"]

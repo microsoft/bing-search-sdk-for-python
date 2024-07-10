@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._news_search_client import NewsSearchClient
-__all__ = ['NewsSearchClient']
+
+__all__ = ["NewsSearchClient"]

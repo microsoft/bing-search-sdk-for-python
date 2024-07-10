@@ -20,15 +20,10 @@ class ResponseBase(msrest.serialization.Model):
     """
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(ResponseBase, self).__init__(**kwargs)
         self.type = type
 
@@ -45,20 +40,15 @@ class Identifiable(ResponseBase):
     """
 
     _validation = {
-        'id': {'readonly': True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(Identifiable, self).__init__(type=type, **kwargs)
         self.id = None
 
@@ -77,22 +67,17 @@ class Response(Identifiable):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(Response, self).__init__(type=type, **kwargs)
         self.web_search_url = None
 
@@ -113,24 +98,19 @@ class Answer(Response):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(Answer, self).__init__(type=type, **kwargs)
         self.follow_up_queries = None
 
@@ -159,32 +139,27 @@ class Thing(Response):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(Thing, self).__init__(type=type, **kwargs)
         self.name = None
         self.url = None
@@ -227,41 +202,37 @@ class CreativeWork(Thing):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
+        "id": {"readonly": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
     }
 
     def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        type: Optional[str] = None,
-        **kwargs
+        self, *, type: Optional[str] = None, type: Optional[str] = None, **kwargs
     ):
         super(CreativeWork, self).__init__(type=type, type=type, **kwargs)
         self.thumbnail_url = None
@@ -305,43 +276,39 @@ class Article(CreativeWork):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'word_count': {'readonly': True},
+        "id": {"readonly": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "word_count": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'word_count': {'key': 'wordCount', 'type': 'int'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "word_count": {"key": "wordCount", "type": "int"},
     }
 
     def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        type: Optional[str] = None,
-        **kwargs
+        self, *, type: Optional[str] = None, type: Optional[str] = None, **kwargs
     ):
         super(Article, self).__init__(type=type, type=type, **kwargs)
         self.word_count = None
@@ -377,29 +344,24 @@ class Computation(Answer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'expression': {'required': True},
-        'value': {'required': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "expression": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'expression': {'key': 'expression', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "expression": {"key": "expression", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(
-        self,
-        *,
-        expression: str,
-        value: str,
-        type: Optional[str] = None,
-        **kwargs
+        self, *, expression: str, value: str, type: Optional[str] = None, **kwargs
     ):
         super(Computation, self).__init__(type=type, **kwargs)
         self.expression = expression
@@ -433,29 +395,25 @@ class Error(msrest.serialization.Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'sub_code': {'readonly': True},
-        'message': {'required': True},
-        'more_details': {'readonly': True},
-        'parameter': {'readonly': True},
-        'value': {'readonly': True},
+        "code": {"required": True},
+        "sub_code": {"readonly": True},
+        "message": {"required": True},
+        "more_details": {"readonly": True},
+        "parameter": {"readonly": True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'sub_code': {'key': 'subCode', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'more_details': {'key': 'moreDetails', 'type': 'str'},
-        'parameter': {'key': 'parameter', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "sub_code": {"key": "subCode", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "more_details": {"key": "moreDetails", "type": "str"},
+        "parameter": {"key": "parameter", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(
-        self,
-        *,
-        code: Union[str, "ErrorCode"] = "None",
-        message: str,
-        **kwargs
+        self, *, code: Union[str, "ErrorCode"] = "None", message: str, **kwargs
     ):
         super(Error, self).__init__(**kwargs)
         self.code = code
@@ -484,25 +442,19 @@ class ErrorResponse(Response):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'errors': {'required': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "errors": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'errors': {'key': 'errors', 'type': '[Error]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "errors": {"key": "errors", "type": "[Error]"},
     }
 
-    def __init__(
-        self,
-        *,
-        errors: List["Error"],
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, errors: List["Error"], type: Optional[str] = None, **kwargs):
         super(ErrorResponse, self).__init__(type=type, **kwargs)
         self.errors = errors
 
@@ -550,49 +502,45 @@ class MediaObject(CreativeWork):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'content_url': {'readonly': True},
-        'host_page_url': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
+        "id": {"readonly": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "content_url": {"readonly": True},
+        "host_page_url": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'content_url': {'key': 'contentUrl', 'type': 'str'},
-        'host_page_url': {'key': 'hostPageUrl', 'type': 'str'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "content_url": {"key": "contentUrl", "type": "str"},
+        "host_page_url": {"key": "hostPageUrl", "type": "str"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
     }
 
     def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        type: Optional[str] = None,
-        **kwargs
+        self, *, type: Optional[str] = None, type: Optional[str] = None, **kwargs
     ):
         super(MediaObject, self).__init__(type=type, type=type, **kwargs)
         self.content_url = None
@@ -642,48 +590,43 @@ class ImageObject(MediaObject):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'content_url': {'readonly': True},
-        'host_page_url': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
-        'thumbnail': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "content_url": {"readonly": True},
+        "host_page_url": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
+        "thumbnail": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'content_url': {'key': 'contentUrl', 'type': 'str'},
-        'host_page_url': {'key': 'hostPageUrl', 'type': 'str'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'thumbnail': {'key': 'thumbnail', 'type': 'ImageObject'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "content_url": {"key": "contentUrl", "type": "str"},
+        "host_page_url": {"key": "hostPageUrl", "type": "str"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "thumbnail": {"key": "thumbnail", "type": "ImageObject"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(ImageObject, self).__init__(type=type, **kwargs)
         self.thumbnail = None
 
@@ -711,30 +654,25 @@ class SearchResultsAnswer(Answer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(SearchResultsAnswer, self).__init__(type=type, **kwargs)
         self.query_context = None
         self.total_estimated_matches = None
@@ -777,40 +715,36 @@ class Images(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'next_offset': {'readonly': True},
-        'value': {'required': True},
-        'query_expansions': {'readonly': True},
-        'similar_terms': {'readonly': True},
-        'related_searches': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "next_offset": {"readonly": True},
+        "value": {"required": True},
+        "query_expansions": {"readonly": True},
+        "similar_terms": {"readonly": True},
+        "related_searches": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'next_offset': {'key': 'nextOffset', 'type': 'int'},
-        'value': {'key': 'value', 'type': '[ImageObject]'},
-        'query_expansions': {'key': 'queryExpansions', 'type': '[Query]'},
-        'similar_terms': {'key': 'similarTerms', 'type': '[Query]'},
-        'related_searches': {'key': 'relatedSearches', 'type': '[Query]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "next_offset": {"key": "nextOffset", "type": "int"},
+        "value": {"key": "value", "type": "[ImageObject]"},
+        "query_expansions": {"key": "queryExpansions", "type": "[Query]"},
+        "similar_terms": {"key": "similarTerms", "type": "[Query]"},
+        "related_searches": {"key": "relatedSearches", "type": "[Query]"},
     }
 
     def __init__(
-        self,
-        *,
-        value: List["ImageObject"],
-        type: Optional[str] = None,
-        **kwargs
+        self, *, value: List["ImageObject"], type: Optional[str] = None, **kwargs
     ):
         super(Images, self).__init__(type=type, **kwargs)
         self.next_offset = None
@@ -844,32 +778,27 @@ class Intangible(Thing):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(Intangible, self).__init__(type=type, **kwargs)
 
 
@@ -904,35 +833,29 @@ class News(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
-        'location': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
+        "location": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[Article]'},
-        'location': {'key': 'location', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[Article]"},
+        "location": {"key": "location", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: List["Article"],
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: List["Article"], type: Optional[str] = None, **kwargs):
         super(News, self).__init__(type=type, **kwargs)
         self.value = value
         self.location = None
@@ -974,43 +897,39 @@ class NewsArticle(Article):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'word_count': {'readonly': True},
+        "id": {"readonly": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "word_count": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'word_count': {'key': 'wordCount', 'type': 'int'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "word_count": {"key": "wordCount", "type": "int"},
     }
 
     def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        type: Optional[str] = None,
-        **kwargs
+        self, *, type: Optional[str] = None, type: Optional[str] = None, **kwargs
     ):
         super(NewsArticle, self).__init__(type=type, type=type, **kwargs)
 
@@ -1042,33 +961,27 @@ class Places(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[Thing]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[Thing]"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: List["Thing"],
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: List["Thing"], type: Optional[str] = None, **kwargs):
         super(Places, self).__init__(type=type, **kwargs)
         self.value = value
 
@@ -1097,27 +1010,22 @@ class Query(msrest.serialization.Model):
     """
 
     _validation = {
-        'text': {'required': True},
-        'display_text': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'search_link': {'readonly': True},
-        'thumbnail': {'readonly': True},
+        "text": {"required": True},
+        "display_text": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "search_link": {"readonly": True},
+        "thumbnail": {"readonly": True},
     }
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'display_text': {'key': 'displayText', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'search_link': {'key': 'searchLink', 'type': 'str'},
-        'thumbnail': {'key': 'thumbnail', 'type': 'ImageObject'},
+        "text": {"key": "text", "type": "str"},
+        "display_text": {"key": "displayText", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "search_link": {"key": "searchLink", "type": "str"},
+        "thumbnail": {"key": "thumbnail", "type": "ImageObject"},
     }
 
-    def __init__(
-        self,
-        *,
-        text: str,
-        **kwargs
-    ):
+    def __init__(self, *, text: str, **kwargs):
         super(Query, self).__init__(**kwargs)
         self.text = text
         self.display_text = None
@@ -1162,29 +1070,24 @@ class QueryContext(msrest.serialization.Model):
     """
 
     _validation = {
-        'original_query': {'required': True},
-        'altered_query': {'readonly': True},
-        'alteration_override_query': {'readonly': True},
-        'adult_intent': {'readonly': True},
-        'ask_user_for_location': {'readonly': True},
-        'is_transactional': {'readonly': True},
+        "original_query": {"required": True},
+        "altered_query": {"readonly": True},
+        "alteration_override_query": {"readonly": True},
+        "adult_intent": {"readonly": True},
+        "ask_user_for_location": {"readonly": True},
+        "is_transactional": {"readonly": True},
     }
 
     _attribute_map = {
-        'original_query': {'key': 'originalQuery', 'type': 'str'},
-        'altered_query': {'key': 'alteredQuery', 'type': 'str'},
-        'alteration_override_query': {'key': 'alterationOverrideQuery', 'type': 'str'},
-        'adult_intent': {'key': 'adultIntent', 'type': 'bool'},
-        'ask_user_for_location': {'key': 'askUserForLocation', 'type': 'bool'},
-        'is_transactional': {'key': 'isTransactional', 'type': 'bool'},
+        "original_query": {"key": "originalQuery", "type": "str"},
+        "altered_query": {"key": "alteredQuery", "type": "str"},
+        "alteration_override_query": {"key": "alterationOverrideQuery", "type": "str"},
+        "adult_intent": {"key": "adultIntent", "type": "bool"},
+        "ask_user_for_location": {"key": "askUserForLocation", "type": "bool"},
+        "is_transactional": {"key": "isTransactional", "type": "bool"},
     }
 
-    def __init__(
-        self,
-        *,
-        original_query: str,
-        **kwargs
-    ):
+    def __init__(self, *, original_query: str, **kwargs):
         super(QueryContext, self).__init__(**kwargs)
         self.original_query = original_query
         self.altered_query = None
@@ -1204,19 +1107,14 @@ class RankingGroup(msrest.serialization.Model):
     """
 
     _validation = {
-        'items': {'required': True},
+        "items": {"required": True},
     }
 
     _attribute_map = {
-        'items': {'key': 'items', 'type': '[RankingItem]'},
+        "items": {"key": "items", "type": "[RankingItem]"},
     }
 
-    def __init__(
-        self,
-        *,
-        items: List["RankingItem"],
-        **kwargs
-    ):
+    def __init__(self, *, items: List["RankingItem"], **kwargs):
         super(RankingGroup, self).__init__(**kwargs)
         self.items = items
 
@@ -1249,29 +1147,24 @@ class RankingItem(msrest.serialization.Model):
     """
 
     _validation = {
-        'answer_type': {'required': True},
-        'result_index': {'readonly': True},
-        'value': {'readonly': True},
-        'html_index': {'readonly': True},
-        'textual_index': {'readonly': True},
-        'screenshot_index': {'readonly': True},
+        "answer_type": {"required": True},
+        "result_index": {"readonly": True},
+        "value": {"readonly": True},
+        "html_index": {"readonly": True},
+        "textual_index": {"readonly": True},
+        "screenshot_index": {"readonly": True},
     }
 
     _attribute_map = {
-        'answer_type': {'key': 'answerType', 'type': 'str'},
-        'result_index': {'key': 'resultIndex', 'type': 'int'},
-        'value': {'key': 'value', 'type': 'Identifiable'},
-        'html_index': {'key': 'htmlIndex', 'type': 'int'},
-        'textual_index': {'key': 'textualIndex', 'type': 'int'},
-        'screenshot_index': {'key': 'screenshotIndex', 'type': 'int'},
+        "answer_type": {"key": "answerType", "type": "str"},
+        "result_index": {"key": "resultIndex", "type": "int"},
+        "value": {"key": "value", "type": "Identifiable"},
+        "html_index": {"key": "htmlIndex", "type": "int"},
+        "textual_index": {"key": "textualIndex", "type": "int"},
+        "screenshot_index": {"key": "screenshotIndex", "type": "int"},
     }
 
-    def __init__(
-        self,
-        *,
-        answer_type: Union[str, "AnswerType"],
-        **kwargs
-    ):
+    def __init__(self, *, answer_type: Union[str, "AnswerType"], **kwargs):
         super(RankingItem, self).__init__(**kwargs)
         self.answer_type = answer_type
         self.result_index = None
@@ -1296,21 +1189,18 @@ class RankingResponse(msrest.serialization.Model):
     """
 
     _validation = {
-        'pole': {'readonly': True},
-        'mainline': {'readonly': True},
-        'sidebar': {'readonly': True},
+        "pole": {"readonly": True},
+        "mainline": {"readonly": True},
+        "sidebar": {"readonly": True},
     }
 
     _attribute_map = {
-        'pole': {'key': 'pole', 'type': 'RankingGroup'},
-        'mainline': {'key': 'mainline', 'type': 'RankingGroup'},
-        'sidebar': {'key': 'sidebar', 'type': 'RankingGroup'},
+        "pole": {"key": "pole", "type": "RankingGroup"},
+        "mainline": {"key": "mainline", "type": "RankingGroup"},
+        "sidebar": {"key": "sidebar", "type": "RankingGroup"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(RankingResponse, self).__init__(**kwargs)
         self.pole = None
         self.mainline = None
@@ -1344,33 +1234,27 @@ class RelatedSearchesRelatedSearchAnswer(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[Query]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[Query]"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: List["Query"],
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: List["Query"], type: Optional[str] = None, **kwargs):
         super(RelatedSearchesRelatedSearchAnswer, self).__init__(type=type, **kwargs)
         self.value = value
 
@@ -1411,42 +1295,40 @@ class SearchResponse(Response):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'query_context': {'readonly': True},
-        'web_pages': {'readonly': True},
-        'images': {'readonly': True},
-        'news': {'readonly': True},
-        'related_searches': {'readonly': True},
-        'spell_suggestions': {'readonly': True},
-        'time_zone': {'readonly': True},
-        'videos': {'readonly': True},
-        'computation': {'readonly': True},
-        'ranking_response': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "query_context": {"readonly": True},
+        "web_pages": {"readonly": True},
+        "images": {"readonly": True},
+        "news": {"readonly": True},
+        "related_searches": {"readonly": True},
+        "spell_suggestions": {"readonly": True},
+        "time_zone": {"readonly": True},
+        "videos": {"readonly": True},
+        "computation": {"readonly": True},
+        "ranking_response": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'web_pages': {'key': 'webPages', 'type': 'WebAnswer'},
-        'images': {'key': 'images', 'type': 'Images'},
-        'news': {'key': 'news', 'type': 'News'},
-        'related_searches': {'key': 'relatedSearches', 'type': 'RelatedSearchesRelatedSearchAnswer'},
-        'spell_suggestions': {'key': 'spellSuggestions', 'type': 'SpellSuggestions'},
-        'time_zone': {'key': 'timeZone', 'type': 'TimeZone'},
-        'videos': {'key': 'videos', 'type': 'Videos'},
-        'computation': {'key': 'computation', 'type': 'Computation'},
-        'ranking_response': {'key': 'rankingResponse', 'type': 'RankingResponse'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "web_pages": {"key": "webPages", "type": "WebAnswer"},
+        "images": {"key": "images", "type": "Images"},
+        "news": {"key": "news", "type": "News"},
+        "related_searches": {
+            "key": "relatedSearches",
+            "type": "RelatedSearchesRelatedSearchAnswer",
+        },
+        "spell_suggestions": {"key": "spellSuggestions", "type": "SpellSuggestions"},
+        "time_zone": {"key": "timeZone", "type": "TimeZone"},
+        "videos": {"key": "videos", "type": "Videos"},
+        "computation": {"key": "computation", "type": "Computation"},
+        "ranking_response": {"key": "rankingResponse", "type": "RankingResponse"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(SearchResponse, self).__init__(type=type, **kwargs)
         self.query_context = None
         self.web_pages = None
@@ -1488,33 +1370,27 @@ class SpellSuggestions(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[Query]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[Query]"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: List["Query"],
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: List["Query"], type: Optional[str] = None, **kwargs):
         super(SpellSuggestions, self).__init__(type=type, **kwargs)
         self.value = value
 
@@ -1543,32 +1419,27 @@ class StructuredValue(Thing):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(StructuredValue, self).__init__(type=type, **kwargs)
 
 
@@ -1607,26 +1478,26 @@ class TimeZone(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'primary_city_time': {'required': True},
-        'other_city_times': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "primary_city_time": {"required": True},
+        "other_city_times": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'primary_city_time': {'key': 'primaryCityTime', 'type': 'TimeZoneInformation'},
-        'other_city_times': {'key': 'otherCityTimes', 'type': '[TimeZoneInformation]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "primary_city_time": {"key": "primaryCityTime", "type": "TimeZoneInformation"},
+        "other_city_times": {"key": "otherCityTimes", "type": "[TimeZoneInformation]"},
     }
 
     def __init__(
@@ -1656,25 +1527,18 @@ class TimeZoneInformation(msrest.serialization.Model):
     """
 
     _validation = {
-        'location': {'required': True},
-        'time': {'required': True},
-        'utc_offset': {'required': True},
+        "location": {"required": True},
+        "time": {"required": True},
+        "utc_offset": {"required": True},
     }
 
     _attribute_map = {
-        'location': {'key': 'location', 'type': 'str'},
-        'time': {'key': 'time', 'type': 'str'},
-        'utc_offset': {'key': 'utcOffset', 'type': 'str'},
+        "location": {"key": "location", "type": "str"},
+        "time": {"key": "time", "type": "str"},
+        "utc_offset": {"key": "utcOffset", "type": "str"},
     }
 
-    def __init__(
-        self,
-        *,
-        location: str,
-        time: str,
-        utc_offset: str,
-        **kwargs
-    ):
+    def __init__(self, *, location: str, time: str, utc_offset: str, **kwargs):
         super(TimeZoneInformation, self).__init__(**kwargs)
         self.location = location
         self.time = time
@@ -1742,67 +1606,63 @@ class VideoObject(MediaObject):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'content_url': {'readonly': True},
-        'host_page_url': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
-        'motion_thumbnail_url': {'readonly': True},
-        'motion_thumbnail_id': {'readonly': True},
-        'embed_html': {'readonly': True},
-        'allow_https_embed': {'readonly': True},
-        'view_count': {'readonly': True},
-        'thumbnail': {'readonly': True},
-        'video_id': {'readonly': True},
-        'allow_mobile_embed': {'readonly': True},
-        'is_superfresh': {'readonly': True},
+        "id": {"readonly": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "content_url": {"readonly": True},
+        "host_page_url": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
+        "motion_thumbnail_url": {"readonly": True},
+        "motion_thumbnail_id": {"readonly": True},
+        "embed_html": {"readonly": True},
+        "allow_https_embed": {"readonly": True},
+        "view_count": {"readonly": True},
+        "thumbnail": {"readonly": True},
+        "video_id": {"readonly": True},
+        "allow_mobile_embed": {"readonly": True},
+        "is_superfresh": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'content_url': {'key': 'contentUrl', 'type': 'str'},
-        'host_page_url': {'key': 'hostPageUrl', 'type': 'str'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'motion_thumbnail_url': {'key': 'motionThumbnailUrl', 'type': 'str'},
-        'motion_thumbnail_id': {'key': 'motionThumbnailId', 'type': 'str'},
-        'embed_html': {'key': 'embedHtml', 'type': 'str'},
-        'allow_https_embed': {'key': 'allowHttpsEmbed', 'type': 'bool'},
-        'view_count': {'key': 'viewCount', 'type': 'int'},
-        'thumbnail': {'key': 'thumbnail', 'type': 'ImageObject'},
-        'video_id': {'key': 'videoId', 'type': 'str'},
-        'allow_mobile_embed': {'key': 'allowMobileEmbed', 'type': 'bool'},
-        'is_superfresh': {'key': 'isSuperfresh', 'type': 'bool'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "content_url": {"key": "contentUrl", "type": "str"},
+        "host_page_url": {"key": "hostPageUrl", "type": "str"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "motion_thumbnail_url": {"key": "motionThumbnailUrl", "type": "str"},
+        "motion_thumbnail_id": {"key": "motionThumbnailId", "type": "str"},
+        "embed_html": {"key": "embedHtml", "type": "str"},
+        "allow_https_embed": {"key": "allowHttpsEmbed", "type": "bool"},
+        "view_count": {"key": "viewCount", "type": "int"},
+        "thumbnail": {"key": "thumbnail", "type": "ImageObject"},
+        "video_id": {"key": "videoId", "type": "str"},
+        "allow_mobile_embed": {"key": "allowMobileEmbed", "type": "bool"},
+        "is_superfresh": {"key": "isSuperfresh", "type": "bool"},
     }
 
     def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        type: Optional[str] = None,
-        **kwargs
+        self, *, type: Optional[str] = None, type: Optional[str] = None, **kwargs
     ):
         super(VideoObject, self).__init__(type=type, type=type, **kwargs)
         self.motion_thumbnail_url = None
@@ -1849,38 +1709,34 @@ class Videos(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
-        'next_offset': {'readonly': True},
-        'query_expansions': {'readonly': True},
-        'related_searches': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
+        "next_offset": {"readonly": True},
+        "query_expansions": {"readonly": True},
+        "related_searches": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[VideoObject]'},
-        'next_offset': {'key': 'nextOffset', 'type': 'int'},
-        'query_expansions': {'key': 'queryExpansions', 'type': '[Query]'},
-        'related_searches': {'key': 'relatedSearches', 'type': '[Query]'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[VideoObject]"},
+        "next_offset": {"key": "nextOffset", "type": "int"},
+        "query_expansions": {"key": "queryExpansions", "type": "[Query]"},
+        "related_searches": {"key": "relatedSearches", "type": "[Query]"},
     }
 
     def __init__(
-        self,
-        *,
-        value: List["VideoObject"],
-        type: Optional[str] = None,
-        **kwargs
+        self, *, value: List["VideoObject"], type: Optional[str] = None, **kwargs
     ):
         super(Videos, self).__init__(type=type, **kwargs)
         self.value = value
@@ -1919,35 +1775,29 @@ class WebAnswer(SearchResultsAnswer):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
-        'some_results_removed': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
+        "some_results_removed": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[WebPage]'},
-        'some_results_removed': {'key': 'someResultsRemoved', 'type': 'bool'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[WebPage]"},
+        "some_results_removed": {"key": "someResultsRemoved", "type": "bool"},
     }
 
-    def __init__(
-        self,
-        *,
-        value: List["WebPage"],
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, value: List["WebPage"], type: Optional[str] = None, **kwargs):
         super(WebAnswer, self).__init__(type=type, **kwargs)
         self.value = value
         self.some_results_removed = None
@@ -1968,25 +1818,18 @@ class WebGrouping(msrest.serialization.Model):
     """
 
     _validation = {
-        'web_pages': {'required': True},
-        'type': {'required': True},
+        "web_pages": {"required": True},
+        "type": {"required": True},
     }
 
     _attribute_map = {
-        'web_pages': {'key': 'webPages', 'type': '[WebPage]'},
-        'type': {'key': '_type', 'type': 'str'},
+        "web_pages": {"key": "webPages", "type": "[WebPage]"},
+        "type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        'type': {}
-    }
+    _subtype_map = {"type": {}}
 
-    def __init__(
-        self,
-        *,
-        web_pages: List["WebPage"],
-        **kwargs
-    ):
+    def __init__(self, *, web_pages: List["WebPage"], **kwargs):
         super(WebGrouping, self).__init__(**kwargs)
         self.web_pages = web_pages
         self.type = None  # type: Optional[str]
@@ -2004,19 +1847,16 @@ class WebMetaTag(msrest.serialization.Model):
     """
 
     _validation = {
-        'name': {'readonly': True},
-        'content': {'readonly': True},
+        "name": {"readonly": True},
+        "content": {"readonly": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'content': {'key': 'content', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "content": {"key": "content", "type": "str"},
     }
 
-    def __init__(
-        self,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         super(WebMetaTag, self).__init__(**kwargs)
         self.name = None
         self.content = None
@@ -2071,50 +1911,45 @@ class WebPage(CreativeWork):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'display_url': {'readonly': True},
-        'snippet': {'readonly': True},
-        'deep_links': {'readonly': True},
-        'date_last_crawled': {'readonly': True},
-        'search_tags': {'readonly': True},
-        'primary_image_of_page': {'readonly': True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "display_url": {"readonly": True},
+        "snippet": {"readonly": True},
+        "deep_links": {"readonly": True},
+        "date_last_crawled": {"readonly": True},
+        "search_tags": {"readonly": True},
+        "primary_image_of_page": {"readonly": True},
     }
 
     _attribute_map = {
-        'type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'display_url': {'key': 'displayUrl', 'type': 'str'},
-        'snippet': {'key': 'snippet', 'type': 'str'},
-        'deep_links': {'key': 'deepLinks', 'type': '[WebPage]'},
-        'date_last_crawled': {'key': 'dateLastCrawled', 'type': 'str'},
-        'search_tags': {'key': 'searchTags', 'type': '[WebMetaTag]'},
-        'primary_image_of_page': {'key': 'primaryImageOfPage', 'type': 'ImageObject'},
+        "type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "display_url": {"key": "displayUrl", "type": "str"},
+        "snippet": {"key": "snippet", "type": "str"},
+        "deep_links": {"key": "deepLinks", "type": "[WebPage]"},
+        "date_last_crawled": {"key": "dateLastCrawled", "type": "str"},
+        "search_tags": {"key": "searchTags", "type": "[WebMetaTag]"},
+        "primary_image_of_page": {"key": "primaryImageOfPage", "type": "ImageObject"},
     }
 
-    def __init__(
-        self,
-        *,
-        type: Optional[str] = None,
-        **kwargs
-    ):
+    def __init__(self, *, type: Optional[str] = None, **kwargs):
         super(WebPage, self).__init__(type=type, **kwargs)
         self.display_url = None
         self.snippet = None

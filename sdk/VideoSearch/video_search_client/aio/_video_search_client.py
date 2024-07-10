@@ -35,17 +35,22 @@ class VideoSearchClient(object):
         **kwargs: Any
     ) -> None:
         if not base_url:
-            base_url = 'https://api.bing.microsoft.com/v7.0'
+            base_url = "https://api.bing.microsoft.com/v7.0"
         self._config = VideoSearchClientConfiguration(credential, **kwargs)
-        self._client = AsyncPipelineClient(base_url=base_url, config=self._config, **kwargs)
+        self._client = AsyncPipelineClient(
+            base_url=base_url, config=self._config, **kwargs
+        )
 
-        client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
+        client_models = {
+            k: v for k, v in models.__dict__.items() if isinstance(v, type)
+        }
         self._serialize = Serializer(client_models)
         self._serialize.client_side_validation = False
         self._deserialize = Deserializer(client_models)
 
         self.videos = VideosOperations(
-            self._client, self._config, self._serialize, self._deserialize)
+            self._client, self._config, self._serialize, self._deserialize
+        )
 
     async def close(self) -> None:
         await self._client.close()

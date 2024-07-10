@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._auto_suggest_client import AutoSuggestClient
-__all__ = ['AutoSuggestClient']
+
+__all__ = ["AutoSuggestClient"]

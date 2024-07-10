@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._entity_search_client import EntitySearchClient
-__all__ = ['EntitySearchClient']
+
+__all__ = ["EntitySearchClient"]

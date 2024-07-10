@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._spell_check_client import SpellCheckClient
-__all__ = ['SpellCheckClient']
+
+__all__ = ["SpellCheckClient"]
