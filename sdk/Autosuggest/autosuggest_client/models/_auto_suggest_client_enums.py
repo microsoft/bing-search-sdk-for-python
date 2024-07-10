@@ -7,6 +7,7 @@
 from enum import Enum, EnumMeta
 from six import with_metaclass
 
+
 class _CaseInsensitiveEnumMeta(EnumMeta):
     def __getitem__(self, name):
         return super().__getitem__(name.upper())
@@ -25,8 +26,7 @@ class _CaseInsensitiveEnumMeta(EnumMeta):
 
 
 class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
-    """The error code that identifies the category of error.
-    """
+    """The error code that identifies the category of error."""
 
     NONE = "None"
     SERVER_ERROR = "ServerError"
@@ -35,16 +35,19 @@ class ErrorCode(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     INVALID_AUTHORIZATION = "InvalidAuthorization"
     INSUFFICIENT_AUTHORIZATION = "InsufficientAuthorization"
 
+
 class ResponseFormat(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     JSON = "Json"
     JSON_LD = "JsonLd"
+
 
 class SafeSearch(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     OFF = "Off"
     MODERATE = "Moderate"
     STRICT = "Strict"
+
 
 class ScenarioType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
@@ -56,6 +59,7 @@ class ScenarioType(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     PERSONAL_SEARCH_TAGS = "PersonalSearchTags"
     CUSTOM = "Custom"
 
+
 class SearchKind(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 
     WEB_SEARCH = "WebSearch"
@@ -64,6 +68,7 @@ class SearchKind(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
     TAG_SEARCH = "TagSearch"
     LOCATION_SEARCH = "LocationSearch"
     CUSTOM_SEARCH = "CustomSearch"
+
 
 class XBingApisSDK(with_metaclass(_CaseInsensitiveEnumMeta, str, Enum)):
 

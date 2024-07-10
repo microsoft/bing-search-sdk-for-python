@@ -4,9 +4,7 @@ from web_search_client.models import SafeSearch
 from azure.core.credentials import AzureKeyCredential
 
 SUBSCRIPTION_KEY = None
-ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
-
-
+ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
 
 
 def result_types_lookup(subscription_key):
@@ -19,7 +17,7 @@ def result_types_lookup(subscription_key):
     try:
 
         web_data = client.web.search(query="xbox")
-        print("Searched for Query# \" Xbox \"")
+        print('Searched for Query# " Xbox "')
 
         # WebPages
         if web_data.web_pages.value:
@@ -83,8 +81,9 @@ def web_results_with_count_and_offset(subscription_key):
 
     try:
         web_data = client.web.search(
-            query="Best restaurants in Seattle", offset=10, count=20)
-        print("Searched for Query# \" Best restaurants in Seattle \"")
+            query="Best restaurants in Seattle", offset=10, count=20
+        )
+        print('Searched for Query# " Best restaurants in Seattle "')
 
         if web_data.web_pages.value:
 
@@ -110,9 +109,8 @@ def web_search_with_response_filter(subscription_key):
     client = WebSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
 
     try:
-        web_data = client.web.search(
-            query="Microsoft", response_filter=["News"])
-        print("Searched for Query# \" Microsoft \" with response filters \"News\"")
+        web_data = client.web.search(query="Microsoft", response_filter=["News"])
+        print('Searched for Query# " Microsoft " with response filters "News"')
 
         # News attribute since I filtered "News"
         if web_data.news.value:
@@ -143,9 +141,9 @@ def web_search_with_answer_count_promote_and_safe_search(subscription_key):
             query="Lady Gaga",
             answer_count=2,
             promote=["videos"],
-            safe_search=SafeSearch.strict  # or directly "Strict"
+            safe_search=SafeSearch.strict,  # or directly "Strict"
         )
-        print("Searched for Query# \" Lady Gaga\"")
+        print('Searched for Query# " Lady Gaga"')
 
         if web_data.web_pages.value:
 

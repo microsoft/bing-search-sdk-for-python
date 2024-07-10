@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._custom_search_client import CustomSearchClient
-__all__ = ['CustomSearchClient']
+
+__all__ = ["CustomSearchClient"]

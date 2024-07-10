@@ -6,14 +6,23 @@
 from typing import Any, Callable, Dict, Generic, List, Optional, TypeVar, Union
 import warnings
 
-from azure.core.exceptions import ClientAuthenticationError, HttpResponseError, ResourceExistsError, ResourceNotFoundError, map_error
+from azure.core.exceptions import (
+    ClientAuthenticationError,
+    HttpResponseError,
+    ResourceExistsError,
+    ResourceNotFoundError,
+    map_error,
+)
 from azure.core.pipeline import PipelineResponse
 from azure.core.pipeline.transport import AsyncHttpResponse, HttpRequest
 
 from ... import models as _models
 
-T = TypeVar('T')
-ClsType = Optional[Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, Dict[str, Any]], Any]]
+T = TypeVar("T")
+ClsType = Optional[
+    Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, Dict[str, Any]], Any]
+]
+
 
 class VideosOperations:
     """VideosOperations async operations.
@@ -286,77 +295,114 @@ class VideosOperations:
         :rtype: ~video_search_client.models.Videos
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.Videos"]
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.Videos"]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
         # Construct URL
-        url = self.search.metadata['url']  # type: ignore
+        url = self.search.metadata["url"]  # type: ignore
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query(
+                "country_code", country_code, "str"
+            )
         if count is not None:
-            query_parameters['count'] = self._serialize.query("count", count, 'int')
+            query_parameters["count"] = self._serialize.query("count", count, "int")
         if freshness is not None:
-            query_parameters['freshness'] = self._serialize.query("freshness", freshness, 'str')
+            query_parameters["freshness"] = self._serialize.query(
+                "freshness", freshness, "str"
+            )
         if id is not None:
-            query_parameters['id'] = self._serialize.query("id", id, 'str')
+            query_parameters["id"] = self._serialize.query("id", id, "str")
         if length is not None:
-            query_parameters['length'] = self._serialize.query("length", length, 'str')
+            query_parameters["length"] = self._serialize.query("length", length, "str")
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
         if offset is not None:
-            query_parameters['offset'] = self._serialize.query("offset", offset, 'int')
+            query_parameters["offset"] = self._serialize.query("offset", offset, "int")
         if pricing is not None:
-            query_parameters['pricing'] = self._serialize.query("pricing", pricing, 'str')
-        query_parameters['q'] = self._serialize.query("query", query, 'str')
+            query_parameters["pricing"] = self._serialize.query(
+                "pricing", pricing, "str"
+            )
+        query_parameters["q"] = self._serialize.query("query", query, "str")
         if resolution is not None:
-            query_parameters['resolution'] = self._serialize.query("resolution", resolution, 'str')
+            query_parameters["resolution"] = self._serialize.query(
+                "resolution", resolution, "str"
+            )
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'str')
+            query_parameters["safeSearch"] = self._serialize.query(
+                "safe_search", safe_search, "str"
+            )
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query(
+                "set_lang", set_lang, "str"
+            )
         if text_decorations is not None:
-            query_parameters['textDecorations'] = self._serialize.query("text_decorations", text_decorations, 'bool')
+            query_parameters["textDecorations"] = self._serialize.query(
+                "text_decorations", text_decorations, "bool"
+            )
         if text_format is not None:
-            query_parameters['textFormat'] = self._serialize.query("text_format", text_format, 'str')
+            query_parameters["textFormat"] = self._serialize.query(
+                "text_format", text_format, "str"
+            )
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("x_bing_apis_sdk", x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "x_bing_apis_sdk", x_bing_apis_sdk, "str"
+        )
         if accept is not None:
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header(
+                "accept", accept, "str"
+            )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header(
+                "accept_language", accept_language, "str"
+            )
         if user_agent_parameter is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent_parameter", user_agent_parameter, 'str')
+            header_parameters["User-Agent"] = self._serialize.header(
+                "user_agent_parameter", user_agent_parameter, "str"
+            )
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header(
+                "client_id", client_id, "str"
+            )
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header(
+                "client_ip", client_ip, "str"
+            )
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header(
+                "location", location, "str"
+            )
 
         request = self._client.get(url, query_parameters, header_parameters)
-        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        pipeline_response = await self._client._pipeline.run(
+            request, stream=False, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             error = self._deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize('Videos', pipeline_response)
+        deserialized = self._deserialize("Videos", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    search.metadata = {'url': '/videos/search'}  # type: ignore
+
+    search.metadata = {"url": "/videos/search"}  # type: ignore
 
     async def details(
         self,
@@ -580,69 +626,104 @@ class VideosOperations:
         :rtype: ~video_search_client.models.VideoDetails
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.VideoDetails"]
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.VideoDetails"]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
         # Construct URL
-        url = self.details.metadata['url']  # type: ignore
+        url = self.details.metadata["url"]  # type: ignore
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query(
+                "country_code", country_code, "str"
+            )
         if id is not None:
-            query_parameters['id'] = self._serialize.query("id", id, 'str')
+            query_parameters["id"] = self._serialize.query("id", id, "str")
         if modules is not None:
-            query_parameters['modules'] = self._serialize.query("modules", modules, '[str]', div=',')
+            query_parameters["modules"] = self._serialize.query(
+                "modules", modules, "[str]", div=","
+            )
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
-        query_parameters['q'] = self._serialize.query("query", query, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
+        query_parameters["q"] = self._serialize.query("query", query, "str")
         if resolution is not None:
-            query_parameters['resolution'] = self._serialize.query("resolution", resolution, 'str')
+            query_parameters["resolution"] = self._serialize.query(
+                "resolution", resolution, "str"
+            )
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'str')
+            query_parameters["safeSearch"] = self._serialize.query(
+                "safe_search", safe_search, "str"
+            )
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query(
+                "set_lang", set_lang, "str"
+            )
         if text_decorations is not None:
-            query_parameters['textDecorations'] = self._serialize.query("text_decorations", text_decorations, 'bool')
+            query_parameters["textDecorations"] = self._serialize.query(
+                "text_decorations", text_decorations, "bool"
+            )
         if text_format is not None:
-            query_parameters['textFormat'] = self._serialize.query("text_format", text_format, 'str')
+            query_parameters["textFormat"] = self._serialize.query(
+                "text_format", text_format, "str"
+            )
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("x_bing_apis_sdk", x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "x_bing_apis_sdk", x_bing_apis_sdk, "str"
+        )
         if accept is not None:
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header(
+                "accept", accept, "str"
+            )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header(
+                "accept_language", accept_language, "str"
+            )
         if user_agent_parameter is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent_parameter", user_agent_parameter, 'str')
+            header_parameters["User-Agent"] = self._serialize.header(
+                "user_agent_parameter", user_agent_parameter, "str"
+            )
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header(
+                "client_id", client_id, "str"
+            )
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header(
+                "client_ip", client_ip, "str"
+            )
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header(
+                "location", location, "str"
+            )
 
         request = self._client.get(url, query_parameters, header_parameters)
-        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        pipeline_response = await self._client._pipeline.run(
+            request, stream=False, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             error = self._deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize('VideoDetails', pipeline_response)
+        deserialized = self._deserialize("VideoDetails", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    details.metadata = {'url': '/videos/details'}  # type: ignore
+
+    details.metadata = {"url": "/videos/details"}  # type: ignore
 
     async def trending(
         self,
@@ -835,59 +916,90 @@ class VideosOperations:
         :rtype: ~video_search_client.models.TrendingVideos
         :raises: ~azure.core.exceptions.HttpResponseError
         """
-        cls = kwargs.pop('cls', None)  # type: ClsType["_models.TrendingVideos"]
+        cls = kwargs.pop("cls", None)  # type: ClsType["_models.TrendingVideos"]
         error_map = {
-            401: ClientAuthenticationError, 404: ResourceNotFoundError, 409: ResourceExistsError
+            401: ClientAuthenticationError,
+            404: ResourceNotFoundError,
+            409: ResourceExistsError,
         }
-        error_map.update(kwargs.pop('error_map', {}))
+        error_map.update(kwargs.pop("error_map", {}))
 
         # Construct URL
-        url = self.trending.metadata['url']  # type: ignore
+        url = self.trending.metadata["url"]  # type: ignore
 
         # Construct parameters
         query_parameters = {}  # type: Dict[str, Any]
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query(
+                "country_code", country_code, "str"
+            )
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'str')
+            query_parameters["safeSearch"] = self._serialize.query(
+                "safe_search", safe_search, "str"
+            )
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query(
+                "set_lang", set_lang, "str"
+            )
         if text_decorations is not None:
-            query_parameters['textDecorations'] = self._serialize.query("text_decorations", text_decorations, 'bool')
+            query_parameters["textDecorations"] = self._serialize.query(
+                "text_decorations", text_decorations, "bool"
+            )
         if text_format is not None:
-            query_parameters['textFormat'] = self._serialize.query("text_format", text_format, 'str')
+            query_parameters["textFormat"] = self._serialize.query(
+                "text_format", text_format, "str"
+            )
 
         # Construct headers
         header_parameters = {}  # type: Dict[str, Any]
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("x_bing_apis_sdk", x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "x_bing_apis_sdk", x_bing_apis_sdk, "str"
+        )
         if accept is not None:
-            header_parameters['Accept'] = self._serialize.header("accept", accept, 'str')
+            header_parameters["Accept"] = self._serialize.header(
+                "accept", accept, "str"
+            )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header(
+                "accept_language", accept_language, "str"
+            )
         if user_agent_parameter is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent_parameter", user_agent_parameter, 'str')
+            header_parameters["User-Agent"] = self._serialize.header(
+                "user_agent_parameter", user_agent_parameter, "str"
+            )
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header(
+                "client_id", client_id, "str"
+            )
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header(
+                "client_ip", client_ip, "str"
+            )
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header(
+                "location", location, "str"
+            )
 
         request = self._client.get(url, query_parameters, header_parameters)
-        pipeline_response = await self._client._pipeline.run(request, stream=False, **kwargs)
+        pipeline_response = await self._client._pipeline.run(
+            request, stream=False, **kwargs
+        )
         response = pipeline_response.http_response
 
         if response.status_code not in [200]:
-            map_error(status_code=response.status_code, response=response, error_map=error_map)
+            map_error(
+                status_code=response.status_code, response=response, error_map=error_map
+            )
             error = self._deserialize(_models.ErrorResponse, response)
             raise HttpResponseError(response=response, model=error)
 
-        deserialized = self._deserialize('TrendingVideos', pipeline_response)
+        deserialized = self._deserialize("TrendingVideos", pipeline_response)
 
         if cls:
             return cls(pipeline_response, deserialized, {})
 
         return deserialized
-    trending.metadata = {'url': '/videos/trending'}  # type: ignore
+
+    trending.metadata = {"url": "/videos/trending"}  # type: ignore

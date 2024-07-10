@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._custom_search_client import CustomSearchClient
-__all__ = ['CustomSearchClient']
+
+__all__ = ["CustomSearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

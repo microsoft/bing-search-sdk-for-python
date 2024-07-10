@@ -7,5 +7,5 @@
 from ._videos_operations import VideosOperations
 
 __all__ = [
-    'VideosOperations',
+    "VideosOperations",
 ]

@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._spell_check_client import SpellCheckClient
-__all__ = ['SpellCheckClient']
+
+__all__ = ["SpellCheckClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._news_search_client import NewsSearchClient
-__all__ = ['NewsSearchClient']
+
+__all__ = ["NewsSearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

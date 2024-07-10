@@ -5,4 +5,5 @@
 # --------------------------------------------------------------------------
 
 from ._custom_image_search_client import CustomImageSearchClient
-__all__ = ['CustomImageSearchClient']
+
+__all__ = ["CustomImageSearchClient"]

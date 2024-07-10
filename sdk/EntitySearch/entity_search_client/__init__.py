@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._entity_search_client import EntitySearchClient
-__all__ = ['EntitySearchClient']
+
+__all__ = ["EntitySearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

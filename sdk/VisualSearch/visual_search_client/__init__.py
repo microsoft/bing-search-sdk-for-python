@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._visual_search_client import VisualSearchClient
-__all__ = ['VisualSearchClient']
+
+__all__ = ["VisualSearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass

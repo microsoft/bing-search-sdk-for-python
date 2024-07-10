@@ -5,10 +5,12 @@
 # --------------------------------------------------------------------------
 
 from ._video_search_client import VideoSearchClient
-__all__ = ['VideoSearchClient']
+
+__all__ = ["VideoSearchClient"]
 
 try:
     from ._patch import patch_sdk  # type: ignore
+
     patch_sdk()
 except ImportError:
     pass
