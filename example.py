@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 """Sample launcher.
 
 This file is just the samples launcher. Nothing here os related

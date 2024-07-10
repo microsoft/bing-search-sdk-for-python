@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from video_search_client import VideoSearchClient
 from video_search_client.models import (

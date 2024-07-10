@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from spell_check_client import SpellCheckClient
 from azure.core.credentials import AzureKeyCredential

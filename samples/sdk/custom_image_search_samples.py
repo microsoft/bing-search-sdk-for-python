@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from custom_image_search_client import CustomImageSearchClient
 from azure.core.credentials import AzureKeyCredential

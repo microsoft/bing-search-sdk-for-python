@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from entity_search_client import EntitySearchClient
 from entity_search_client.models import Place
