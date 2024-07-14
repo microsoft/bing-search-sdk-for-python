@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 ## Microsoft Bing News Search SDK for Python
 
 This is the Microsoft Bing News Search Client Library.

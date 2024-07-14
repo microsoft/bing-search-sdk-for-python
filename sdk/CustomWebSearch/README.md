@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 ## Microsoft Bing Custom Web Search SDK for Python
 
 This is the Microsoft Bing Custom Web Search Client Library.

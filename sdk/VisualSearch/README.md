@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 ## Microsoft Bing Visual Search SDK for Python
 
 This is the Microsoft Bing Visual Search Client Library.
