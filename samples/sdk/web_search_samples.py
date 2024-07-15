@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from web_search_client import WebSearchClient
 from web_search_client.models import SafeSearch

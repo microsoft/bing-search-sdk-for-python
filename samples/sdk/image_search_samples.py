@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from image_search_client import ImageSearchClient
 from image_search_client.models import ImageType, ImageAspect, ImageInsightModule

@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 ## Microsoft Bing Spell Check SDK for Python
 
 This is the Microsoft Bing Spell Check Client Library.

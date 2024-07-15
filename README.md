@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 # Bing APIs SDK for Python
 
 

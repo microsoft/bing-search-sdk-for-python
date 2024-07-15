@@ -1,3 +1,6 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
 import os
 from news_search_client import NewsSearchClient
 from azure.core.credentials import AzureKeyCredential

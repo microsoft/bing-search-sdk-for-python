@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 ## Microsoft Bing Autosuggest SDK for Python
 
 This is the Microsoft Bing Autosuggest Client Library.

@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 ## Microsoft Bing Entity Search SDK for Python
 
 This is the Microsoft Bing Entity Search Client Library.
