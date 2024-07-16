@@ -65,3 +65,13 @@ jobs:
           then
             exit 1
           fi
+
+    - name: Checking .toml files for copyright headers
+      run: |
+          count=$(git ls-files '*.toml' | wc -l)
+          count1=$(grep -Fx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.toml') | wc -l)
+          count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.toml') | wc -l)
+          if (( $count != $count1 || $count != count2))
+          then
+            exit 1
+          fi
