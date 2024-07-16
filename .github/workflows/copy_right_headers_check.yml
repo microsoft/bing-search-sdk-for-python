@@ -6,7 +6,6 @@ name: Check for Copyright Headers
 on:
   push:
     branches:
-      - v-ghajam/open-source-compliance-copyright-headers-check
       - main
   pull_request:
     branches:
