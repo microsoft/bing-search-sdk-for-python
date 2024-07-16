@@ -85,3 +85,13 @@ jobs:
           then
             exit 1
           fi
+
+    - name: Checking .typed files for copyright headers
+      run: |
+          count=$(git ls-files '*.typed' | wc -l)
+          count1=$(grep -Fx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.typed') | wc -l)
+          count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.typed') | wc -l)
+          if (( $count != $count1 || $count != count2))
+          then
+            exit 1
+          fi
