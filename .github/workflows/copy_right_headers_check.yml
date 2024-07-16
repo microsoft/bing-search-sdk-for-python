@@ -1,0 +1,67 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+name: Check for Copyright Headers
+
+on:
+  push:
+    branches:
+      - v-ghajam/open-source-compliance-copyright-headers-check
+      - main
+  pull_request:
+    branches:
+      - v-ghajam/open-source-compliance-copyright-headers-check
+      - main
+
+jobs:
+  copyright-headers:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v4
+            
+    - name: Install dependencies
+      run: |
+        sudo apt update -y && sudo apt install git -y
+        sudo apt install fd-find ripgrep
+
+    - name:  test
+      run: |
+        git ls-files *.py
+
+    - name: test2
+      run: |
+        git ls-files **/*.py
+    
+    - name: test3
+      run: |
+        git ls-files *.py **/*.py
+
+    - name: test4
+      run: |
+        git ls-files '*.py'
+
+    - name: Checking .yml files for copyright headers
+      run: |
+          echo 'Get Count of .yml files'
+          count=$(git ls-files *.yml | wc -l)
+          echo $count
+          if grep -Fx '# Copyright (c) Microsoft Corporation.\n# Licensed under the MIT License.' $(git ls-files *.yml) -eq $count
+          then
+            echo 'Success'
+          else
+            echo 'FAIL'
+          fi
+        
+        #   11 cfg
+        #    1 example
+        #    1 gitignore
+        #    1 LICENSE
+        #   16 md
+        #  187 py
+        #   10 toml
+        #   13 txt
+        #    9 typed
+        #    5 yml
