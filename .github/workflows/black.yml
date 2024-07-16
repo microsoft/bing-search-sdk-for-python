@@ -34,5 +34,5 @@ jobs:
 
     - name: Checking the code for formatting issues
       run: |
-          black --check --verbose $(git ls-files *.py)
+          black --check --verbose $(git ls-files '*.py')
         
