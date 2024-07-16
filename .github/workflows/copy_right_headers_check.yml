@@ -10,7 +10,6 @@ on:
       - main
   pull_request:
     branches:
-      - v-ghajam/open-source-compliance-copyright-headers-check
       - main
 
 jobs:
@@ -24,44 +23,15 @@ jobs:
             
     - name: Install dependencies
       run: |
-        sudo apt update -y && sudo apt install git -y
+        sudo apt update && sudo apt install git
         sudo apt install fd-find ripgrep
-
-    - name:  test
-      run: |
-        git ls-files *.py
-
-    - name: test2
-      run: |
-        git ls-files **/*.py
-    
-    - name: test3
-      run: |
-        git ls-files *.py **/*.py
-
-    - name: test4
-      run: |
-        git ls-files '*.py'
 
     - name: Checking .yml files for copyright headers
       run: |
-          echo 'Get Count of .yml files'
-          count=$(git ls-files *.yml | wc -l)
-          echo $count
-          if grep -Fx '# Copyright (c) Microsoft Corporation.\n# Licensed under the MIT License.' $(git ls-files *.yml) -eq $count
+          count=$(git ls-files '*.yml' | wc -l)
+          count1=$(grep -Fx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.yml') | wc -l)
+          count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.yml') | wc -l)
+          if (( $count != $count1 || $count != count2))
           then
-            echo 'Success'
-          else
-            echo 'FAIL'
+            exit 1
           fi
-        
-        #   11 cfg
-        #    1 example
-        #    1 gitignore
-        #    1 LICENSE
-        #   16 md
-        #  187 py
-        #   10 toml
-        #   13 txt
-        #    9 typed
-        #    5 yml
