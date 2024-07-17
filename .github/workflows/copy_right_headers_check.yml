@@ -32,6 +32,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.yml') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.yml')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.yml')
             exit 1
           fi
 
@@ -42,6 +45,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.cfg') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.cfg')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.cfg')
             exit 1
           fi
       
@@ -52,6 +58,9 @@ jobs:
           count2=$(grep -Fx ' Licensed under the MIT License. -->' $(git ls-files '*.md') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '<!-- Copyright (c) Microsoft Corporation.' $(git ls-files '*.md')
+            grep -LFx ' Licensed under the MIT License. -->' $(git ls-files '*.md')
             exit 1
           fi
 
@@ -62,6 +71,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.py') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.py')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.py')
             exit 1
           fi
 
@@ -72,6 +84,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.toml') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.toml')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.toml')
             exit 1
           fi
 
@@ -82,6 +97,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*requirements.txt') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*requirements.txt')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*requirements.txt')
             exit 1
           fi
 
@@ -92,6 +110,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.typed') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.typed')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.typed')
             exit 1
           fi
 
@@ -102,6 +123,9 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.example') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.example')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.example')
             exit 1
           fi
   
@@ -112,5 +136,8 @@ jobs:
           count2=$(grep -Fx '# Licensed under the MIT License.' $(git ls-files '*.gitignore') | wc -l)
           if (( $count != $count1 || $count != count2))
           then
+            echo 'Files with no copyright headers:'
+            grep -LFx '# Copyright (c) Microsoft Corporation.' $(git ls-files '*.gitignore')
+            grep -LFx '# Licensed under the MIT License.' $(git ls-files '*.gitignore')
             exit 1
           fi
