@@ -1,3 +1,5 @@
+<!-- Copyright (c) Microsoft Corporation.
+ Licensed under the MIT License. -->
 # Support
 
 For detailed documentation visit our [Bing APIs for documentation](https://docs.microsoft.com/en-us/bing/search-apis/)
