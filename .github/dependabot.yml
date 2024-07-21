@@ -1,0 +1,21 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directories:
+      - "/"
+      - "/tests"
+      - "/sdk/Autosuggest"
+      - "/sdk/CustomImageSearch"
+      - "/sdk/CustomWebSearch"
+      - "/sdk/EntitySearch"
+      - "/sdk/ImageSearch"
+      - "/sdk/NewsSearch"
+      - "/sdk/SpellCheck"
+      - "/sdk/VideoSearch"
+      - "/sdk/VisualSearch"
+      - "/sdk/WebSearch"
+    schedule:
+      interval: "monthly"
