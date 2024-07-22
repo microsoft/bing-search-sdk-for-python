@@ -2,6 +2,8 @@
 # Licensed under the MIT License.
 
 name: "CodeQL"
+permissions:
+  pull-requests: read
 
 on:
   push:
