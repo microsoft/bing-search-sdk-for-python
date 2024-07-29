@@ -12,10 +12,10 @@ from visual_search_client.models import (
     KnowledgeRequest,
 )
 from azure.core.credentials import AzureKeyCredential
+import dotenv
 
 
-SUBSCRIPTION_KEY = None
-ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 CWD = os.path.dirname(__file__)
 TEST_IMAGES = os.path.join(CWD, "TestImages")
@@ -319,13 +319,20 @@ def search_url_with_json(subscription_key):
     except Exception as e:
         print("Encountered exception. " + str(e))
 
+def main() -> None:
+    """Main function
+    """ 
+    dotenv_v = dotenv.dotenv_values()
+    
+    SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_VISUAL_SEARCH_SUBSCRIPTION_KEY"
+    subscription_key = dotenv_v.get(SUBSCRIPTION_KEY_ENV_VAR_NAME, os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME))
+
+    search_image_binary(subscription_key)
+    search_image_binary_with_crop_area(subscription_key)
+    search_url_with_filters(subscription_key)
+    search_insights_token_with_crop_area(subscription_key)
+    search_url_with_json(subscription_key)
+
 
 if __name__ == "__main__":
-    import sys, os.path
-
-    sys.path.append(os.path.abspath(os.path.join(__file__, "..", "..", "..")))
-    search_image_binary(SUBSCRIPTION_KEY)
-    search_image_binary_with_crop_area(SUBSCRIPTION_KEY)
-    search_url_with_filters(SUBSCRIPTION_KEY)
-    search_insights_token_with_crop_area(SUBSCRIPTION_KEY)
-    search_url_with_json(SUBSCRIPTION_KEY)
+    main()
