@@ -5,9 +5,11 @@ import os
 from web_search_client import WebSearchClient
 from web_search_client.models import SafeSearch
 from azure.core.credentials import AzureKeyCredential
+import dotenv
 
-SUBSCRIPTION_KEY = None
-ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
+
+
 
 
 def result_types_lookup(subscription_key):
@@ -15,7 +17,7 @@ def result_types_lookup(subscription_key):
 
     This will look up a single query (Xbox) and print out name and url for first web, image, news and videos results.
     """
-    client = WebSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = WebSearchClient(AzureKeyCredential(subscription_key))
 
     try:
 
@@ -80,7 +82,7 @@ def web_results_with_count_and_offset(subscription_key):
     This will search (Best restaurants in Seattle), verify number of results and print out name and url of first result.
     """
 
-    client = WebSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = WebSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         web_data = client.web.search(
@@ -109,7 +111,7 @@ def web_search_with_response_filter(subscription_key):
     This will search (Microsoft) with response filters to news and print details of news.
     """
 
-    client = WebSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = WebSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         web_data = client.web.search(query="Microsoft", response_filter=["News"])
@@ -137,7 +139,7 @@ def web_search_with_answer_count_promote_and_safe_search(subscription_key):
     This will search (Lady Gaga) with answerCount and promote parameters and print details of answers.
     """
 
-    client = WebSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = WebSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         web_data = client.web.search(
@@ -162,9 +164,18 @@ def web_search_with_answer_count_promote_and_safe_search(subscription_key):
     except Exception as err:
         print("Encountered exception. {}".format(err))
 
+def main() -> None:
+    """Main function
+    """ 
+    dotenv_v = dotenv.dotenv_values()
+    
+    SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_WEB_SEARCH_SUBSCRIPTION_KEY"
+    subscription_key = dotenv_v.get(SUBSCRIPTION_KEY_ENV_VAR_NAME, os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME))
+    
+    result_types_lookup(subscription_key)
+    web_results_with_count_and_offset(subscription_key)
+    web_search_with_response_filter(subscription_key)
+    web_search_with_answer_count_promote_and_safe_search(subscription_key)
 
 if __name__ == "__main__":
-    result_types_lookup(SUBSCRIPTION_KEY)
-    web_results_with_count_and_offset(SUBSCRIPTION_KEY)
-    web_search_with_response_filter(SUBSCRIPTION_KEY)
-    web_search_with_answer_count_promote_and_safe_search(SUBSCRIPTION_KEY)
+    main()
