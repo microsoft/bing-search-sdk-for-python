@@ -79,7 +79,7 @@ def video_trending(subscription_key):
     client = VideoSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
 
     try:
-        trending_result = client.videos.trending(market='en-US')
+        trending_result = client.videos.trending(market="en-US")
         print("Search trending video")
 
         # Banner tiles
