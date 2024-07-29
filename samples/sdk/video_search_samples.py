@@ -10,18 +10,17 @@ from video_search_client.models import (
     VideoInsightModule,
 )
 from azure.core.credentials import AzureKeyCredential
+import dotenv
 
 
-SUBSCRIPTION_KEY = None
-ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
-
+ENDPOINT = "https://api.bing.microsoft.com"+  "/v7.0/"
 
 def video_search(subscription_key):
     """VideoSearch.
 
     This will search videos for (SwiftKey) then verify number of results and print out id, name and url of first video result.
     """
-    client = VideoSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = VideoSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         video_result = client.videos.search(query="SwiftKey")
@@ -45,7 +44,7 @@ def video_search_with_filtering(subscription_key):
 
     This will search videos for (Bellevue Trailer) that is free, short and 1080p resolution then verify number of results and print out id, name and url of first video result
     """
-    client = VideoSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = VideoSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         video_result = client.videos.search(
@@ -76,7 +75,7 @@ def video_trending(subscription_key):
 
     This will trending videos then verify banner tiles and categories.
     """
-    client = VideoSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = VideoSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         trending_result = client.videos.trending()
@@ -129,7 +128,7 @@ def video_detail(subscription_key):
 
     This will search videos for (Bellevue Trailer) and then search for detail information of the first video
     """
-    client = VideoSearchClient(AzureKeyCredential(SUBSCRIPTION_KEY))
+    client = VideoSearchClient(AzureKeyCredential(subscription_key))
 
     try:
         video_result = client.videos.search(query="Bellevue Trailer")
@@ -176,11 +175,18 @@ def video_detail(subscription_key):
         print("Encountered exception. {}".format(err))
 
 
-if __name__ == "__main__":
-    import sys, os.path
+def main() -> None:
+    """Main function
+    """
+    dotenv_v = dotenv.dotenv_values()
 
-    sys.path.append(os.path.abspath(os.path.join(__file__, "..", "..", "..")))
-    video_search(SUBSCRIPTION_KEY)
-    video_search_with_filtering(SUBSCRIPTION_KEY)
-    video_trending(SUBSCRIPTION_KEY)
-    video_detail(SUBSCRIPTION_KEY)
+    SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_VIDEO_SEARCH_SUBSCRIPTION_KEY"
+    subscription_key = dotenv_v.get(SUBSCRIPTION_KEY_ENV_VAR_NAME, os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME))
+
+    video_search(subscription_key)
+    video_search_with_filtering(subscription_key)
+    video_trending(subscription_key)
+    video_detail(subscription_key)
+
+if __name__ == "__main__":
+    main()
