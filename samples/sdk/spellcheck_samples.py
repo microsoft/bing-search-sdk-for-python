@@ -4,8 +4,9 @@
 import os
 from spell_check_client import SpellCheckClient
 from azure.core.credentials import AzureKeyCredential
+import dotenv
 
-SUBSCRIPTION_KEY = None
+
 ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
 
 
@@ -53,9 +54,16 @@ def spellcheck(subscription_key):
     except Exception as err:
         print("Encountered exception. {}".format(err))
 
+def main() -> None:
+    """Main function
+    """ 
+    dotenv_v = dotenv.dotenv_values()
+    
+    SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_SPELL_CHECK_SUBSCRIPTION_KEY"
+    subscription_key = dotenv_v.get(SUBSCRIPTION_KEY_ENV_VAR_NAME, os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME))
+
+    spellcheck(subscription_key)
+
 
 if __name__ == "__main__":
-    import sys, os.path
-
-    sys.path.append(os.path.abspath(os.path.join(__file__, "..", "..", "..")))
-    spellcheck(SUBSCRIPTION_KEY)
+    main()
