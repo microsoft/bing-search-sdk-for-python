@@ -4,9 +4,9 @@
 import os
 from news_search_client import NewsSearchClient
 from azure.core.credentials import AzureKeyCredential
+import dotenv
 
 
-SUBSCRIPTION_KEY = None
 ENDPOINT = "https://api.bing.microsoft.com" + "/v7.0/"
 
 
@@ -16,7 +16,7 @@ def news_search(subscription_key):
     This will search news for (Quantum  Computing) with market and count parameters then verify number of results and print out totalEstimatedMatches, name, url, description, published time and name of provider of the first news result
     """
     client = NewsSearchClient(
-        endpoint=ENDPOINT, credential=AzureKeyCredential(SUBSCRIPTION_KEY)
+        endpoint=ENDPOINT, credential=AzureKeyCredential(subscription_key)
     )
 
     try:
@@ -51,7 +51,7 @@ def news_search_with_filtering(subscription_key):
     This will search most recent news for (Artificial Intelligence) with freshness and sortBy parameters then verify number of results and print out totalEstimatedMatches, name, url, description, published time and name of provider of the first news result.
     """
     client = NewsSearchClient(
-        endpoint=ENDPOINT, credential=AzureKeyCredential(SUBSCRIPTION_KEY)
+        endpoint=ENDPOINT, credential=AzureKeyCredential(subscription_key)
     )
 
     try:
@@ -86,7 +86,7 @@ def news_category(subscription_key):
     This will search category news for movie and TV entertainment with safe search then verify number of results and print out category, name, url, description, published time and name of provider of the first news result.
     """
     client = NewsSearchClient(
-        endpoint=ENDPOINT, credential=AzureKeyCredential(SUBSCRIPTION_KEY)
+        endpoint=ENDPOINT, credential=AzureKeyCredential(subscription_key)
     )
 
     try:
@@ -117,7 +117,7 @@ def news_trending(subscription_key):
     This will search news trending topics in Bing then verify number of results and print out name, text of query, webSearchUrl, newsSearchUrl and image Url of the first news result.
     """
     client = NewsSearchClient(
-        endpoint=ENDPOINT, credential=AzureKeyCredential(SUBSCRIPTION_KEY)
+        endpoint=ENDPOINT, credential=AzureKeyCredential(subscription_key)
     )
 
     try:
@@ -139,11 +139,19 @@ def news_trending(subscription_key):
         print("Encountered exception. {}".format(err))
 
 
-if __name__ == "__main__":
-    import sys, os.path
+def main() -> None:
+    """Main function
+    """ 
+    dotenv_v = dotenv.dotenv_values()
+    
+    SUBSCRIPTION_KEY_ENV_VAR_NAME = "BING_SEARCH_V7_NEWS_SEARCH_SUBSCRIPTION_KEY"
+    subscription_key = dotenv_v.get(SUBSCRIPTION_KEY_ENV_VAR_NAME, os.environ.get(SUBSCRIPTION_KEY_ENV_VAR_NAME))
 
-    sys.path.append(os.path.abspath(os.path.join(__file__, "..", "..", "..")))
-    news_search(SUBSCRIPTION_KEY)
-    news_search_with_filtering(SUBSCRIPTION_KEY)
-    news_category(SUBSCRIPTION_KEY)
-    news_trending(SUBSCRIPTION_KEY)
+    news_search(subscription_key)
+    news_search_with_filtering(subscription_key)
+    news_category(subscription_key)
+    news_trending(subscription_key)
+
+
+if __name__ == "__main__":
+    main()
