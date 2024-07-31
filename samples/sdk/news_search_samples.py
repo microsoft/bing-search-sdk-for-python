@@ -91,9 +91,9 @@ def news_category(subscription_key):
 
     try:
         news_result = client.news.category(
-            category="Entertainment_MovieAndTV", market="en-us", safe_search="strict"
+            category="Entertainment", market="en-us", safe_search="strict"
         )
-        print("Search category news for movie and TV entertainment with safe search")
+        print("Search category news entertainment with safe search")
 
         if news_result.value:
             first_news_result = news_result.value[0]
