@@ -123,6 +123,17 @@ See [requirements.txt](./requirements.txt)
       pytest
       ```
 
+### Running tests
+First execute the following command from the root level of the repo:
+```bash
+pip install -r ./tests/test-requirements.txt
+```
+
+Then run pytest by simply typing it into your CLI:
+```bash
+pytest
+```
+
 ## Need help?
 
 See [Support](./SUPPORT.md)
