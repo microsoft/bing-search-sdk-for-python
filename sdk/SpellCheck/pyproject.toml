@@ -5,7 +5,7 @@
 requires = [
     "setuptools>=42",
     "wheel",
-    "msrest>=0.5.0",
+    "msrest>=0.7.1",
     "msrestazure>=0.4.32,<2.0.0",
     "azure-common~=1.1",
 ]
