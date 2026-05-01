@@ -6,7 +6,7 @@ requires = [
     "setuptools>=42",
     "wheel",
     "msrest>=0.5.0",
-    "msrestazure>=0.4.32,<2.0.0",
+    "msrestazure>=0.6.4.post1,<2.0.0",
     "azure-common~=1.1",
 ]
 build-backend = "setuptools.build_meta"
